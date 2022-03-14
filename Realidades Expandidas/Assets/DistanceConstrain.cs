@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using ExtensionMethods;
@@ -8,12 +6,14 @@ public class DistanceConstrain : MonoBehaviour
 {
     private Vector3 lastFramePosition;
 
+    [SerializeField] private Limb limb;
     [SerializeField] private bool isMainAnchorPoint;
     [SerializeField] private Transform mainAnchorPoint;
     [SerializeField] private Transform anchorOfRadiusOfAction;
     [SerializeField] private float radiusOfAction;
 
     private FixedJoint joint;
+    private readonly float translationForce = 2f;
 
     private void Awake()
     {
@@ -22,7 +22,135 @@ public class DistanceConstrain : MonoBehaviour
     }
     private void Update()
     {
-        //Debug.Log(Vector3.Distance(transform.position, constrains[1].Constrainer.position));
+        if (Input.GetKey(KeyCode.D))
+        {
+            if (limb == Limb.Hips)
+            {
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (limb == Limb.LeftLeg)
+            {
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.Translate(Vector3.right * translationForce* Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            if (limb == Limb.RightLeg)
+            {
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (limb == Limb.LeftArm)
+            {
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            if (limb == Limb.RightArm)
+            {
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                }
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -65,4 +193,6 @@ public class DistanceConstrain : MonoBehaviour
         if (other.gameObject.layer == 0)
             joint.connectedBody = null;
     }
+
+    public enum Limb { Hips, LeftArm, RightArm, LeftLeg, RightLeg }
 }

@@ -13,8 +13,11 @@ public class DistanceConstrain : MonoBehaviour
     [SerializeField] private Transform anchorOfRadiusOfAction;
     [SerializeField] private float radiusOfAction;
 
+    private FixedJoint joint;
+
     private void Awake()
     {
+        joint = GetComponent<FixedJoint>();
         lastFramePosition = transform.position;
     }
     private void Update()
@@ -55,5 +58,11 @@ public class DistanceConstrain : MonoBehaviour
     {
         Gizmos.color = new Color(0, 1, 0, 0.15f);
         Gizmos.DrawSphere(anchorOfRadiusOfAction.transform.position, radiusOfAction);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 0)
+            joint.connectedBody = null;
     }
 }

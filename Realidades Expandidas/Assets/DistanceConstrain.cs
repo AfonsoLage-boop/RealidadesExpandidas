@@ -2,6 +2,9 @@ using UnityEngine;
 using System;
 using ExtensionMethods;
 
+/// <summary>
+/// Constrains limbs distance.
+/// </summary>
 public class DistanceConstrain : MonoBehaviour
 {
     private Vector3 lastFramePosition;
@@ -20,9 +23,13 @@ public class DistanceConstrain : MonoBehaviour
         joint = GetComponent<FixedJoint>();
         lastFramePosition = transform.position;
     }
+
+    /// <summary>
+    /// Gets limbs input and updates their position.
+    /// </summary>
     private void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.S))
         {
             if (limb == Limb.Hips)
             {
@@ -48,7 +55,7 @@ public class DistanceConstrain : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.D))
         {
             if (limb == Limb.LeftLeg)
             {
@@ -100,7 +107,7 @@ public class DistanceConstrain : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.E))
         {
             if (limb == Limb.LeftArm)
             {
@@ -126,7 +133,7 @@ public class DistanceConstrain : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.Q))
         {
             if (limb == Limb.RightArm)
             {
@@ -153,6 +160,9 @@ public class DistanceConstrain : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Constrains limbs positions.
+    /// </summary>
     private void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
@@ -172,27 +182,27 @@ public class DistanceConstrain : MonoBehaviour
         }
     }
 
-    [Serializable]
-    public struct Constrain
-    {
-        [SerializeField] private Transform constrainer;
-        [SerializeField] private Vector2 distanceLimit;
-
-        public Transform Constrainer => constrainer;
-        public Vector2 DistanceLimit => distanceLimit;
-    }
-
+    /// <summary>
+    /// Draws limbs radius of action gizmos.
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(0, 1, 0, 0.15f);
         Gizmos.DrawSphere(anchorOfRadiusOfAction.transform.position, radiusOfAction);
     }
 
+    /// <summary>
+    /// On limb collision.
+    /// </summary>
+    /// <param name="other">Other collider.q</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 0)
             joint.connectedBody = null;
     }
 
+    /// <summary>
+    /// Enum for limbs.
+    /// </summary>
     public enum Limb { Hips, LeftArm, RightArm, LeftLeg, RightLeg }
 }

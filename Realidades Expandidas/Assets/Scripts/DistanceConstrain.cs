@@ -24,11 +24,47 @@ public class DistanceConstrain : MonoBehaviour
         lastFramePosition = transform.position;
     }
 
+    FingerTip[] fingers;
+    FingerTip leftIndex;
+    Vector3 initialLeftFingerPosition;
+    Vector3 leftIndexPosition;
+
+    private void Start()
+    {
+        fingers = FindObjectsOfType<FingerTip>();
+        foreach (FingerTip finger in fingers)
+        {
+            if (finger.FingerEnum == FingerEnum.LeftIndex)
+            {
+                leftIndex = finger;
+                initialLeftFingerPosition = finger.transform.position;
+                leftIndexPosition = Vector3.zero;
+            }
+        }
+ 
+        
+    }
+
     /// <summary>
     /// Gets limbs input and updates their position.
     /// </summary>
     private void Update()
     {
+        leftIndexPosition = leftIndex.transform.position;
+
+
+
+        if (limb == Limb.LeftArm)
+        {
+            leftIndexPosition.z = 0;
+            transform.position = leftIndexPosition;
+            
+            
+        }
+
+
+
+        /*
         if (Input.GetKey(KeyCode.S))
         {
             if (limb == Limb.Hips)
@@ -158,6 +194,7 @@ public class DistanceConstrain : MonoBehaviour
                 }
             }
         }
+        */
     }
 
     /// <summary>

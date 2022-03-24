@@ -21,13 +21,12 @@ public class MarionetteControl : MonoBehaviour
 
     // Finger positions
     private FingerPosition fingerControl;
-    private Vector2 leftIndexPosition;
 
     // Screen positions
     private static Vector2 FIRSTQUADRANTWIDTH = new Vector2(Screen.width / 4, Screen.width / 2);
     private static Vector2 FIRSTQUADRANTHEIGHT = new Vector2(Screen.width / 4, Screen.width / 2.35f);
-    private static Vector2 FIRSTQUADRANTMIDPOINT = 
-        new Vector2((Screen.width / 4 + Screen.width / 2) / 2, (Screen.width / 4 + Screen.width / 2.35f) / 2);
+    private static Vector2 SECONDQUADRANTWIDTH = new Vector2(Screen.width / 2, Screen.width / 1.33f);
+    private static Vector2 SECONDQUADRANTHEIGHT = new Vector2(Screen.width / 4, Screen.width / 2.35f);
 
     private void Awake()
     {
@@ -39,10 +38,40 @@ public class MarionetteControl : MonoBehaviour
         FingerPosition[] fingersControl = FindObjectsOfType<FingerPosition>();
         foreach (FingerPosition finger in fingersControl)
         {
-            if (finger.FingerEnum == FingerEnum.LeftIndex)
+            if (limb == Limb.LeftArm)
             {
-                fingerControl = finger;
-                break;
+                if (finger.FingerEnum == FingerEnum.LeftIndex)
+                {
+                    fingerControl = finger;
+                    break;
+                }
+            }
+
+            if (limb == Limb.LeftLeg)
+            {
+                if (finger.FingerEnum == FingerEnum.LeftThumb)
+                {
+                    fingerControl = finger;
+                    break;
+                }
+            }
+
+            if (limb == Limb.RightArm)
+            {
+                if (finger.FingerEnum == FingerEnum.RightIndex)
+                {
+                    fingerControl = finger;
+                    break;
+                }
+            }
+
+            if (limb == Limb.RightLeg)
+            {
+                if (finger.FingerEnum == FingerEnum.RightThumb)
+                {
+                    fingerControl = finger;
+                    break;
+                }
             }
         }
     }
@@ -57,30 +86,38 @@ public class MarionetteControl : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        //leftIndexPosition = leftIndex.transform.position;
+        if (fingerControl == null) return;
 
-        if (limb == Limb.LeftArm)
+        float xForce = 0;
+        float yForce = 0;
+
+        // Updates position to screen point
+        Vector3 screenPos = cam.WorldToScreenPoint(fingerControl.transform.position);
+
+        // Moves each limb
+        switch (limb)
         {
-            //leftIndexPosition.z = 0;
-            //transform.position = leftIndexPosition;
+            case Limb.LeftArm:
+                if (screenPos.x.IsInside(FIRSTQUADRANTWIDTH) &&
+                    screenPos.y.IsInside(FIRSTQUADRANTHEIGHT))
+                {
+                    xForce = Mathf.InverseLerp(FIRSTQUADRANTWIDTH.x, FIRSTQUADRANTWIDTH.y, screenPos.x) - 0.5f;
+                    yForce = Mathf.InverseLerp(FIRSTQUADRANTHEIGHT.x, FIRSTQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
+                }
+                break;
 
-
-
-            Vector3 screenPos = cam.WorldToScreenPoint(fingerControl.transform.position);
-
-            if (screenPos.x.IsInside(FIRSTQUADRANTWIDTH) &&
-                screenPos.y.IsInside(FIRSTQUADRANTHEIGHT))
-            {
-                float xForce = Mathf.InverseLerp(FIRSTQUADRANTWIDTH.x, FIRSTQUADRANTWIDTH.y, screenPos.x) - 0.5f;
-                float yForce = Mathf.InverseLerp(FIRSTQUADRANTHEIGHT.x, FIRSTQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
-
-                transform.Translate(Vector3.right * Time.deltaTime * xForce * 5);
-                transform.Translate(Vector3.up * Time.deltaTime * yForce * 5);
-            }
+            case Limb.RightArm:
+                if (screenPos.x.IsInside(SECONDQUADRANTWIDTH) &&
+                    screenPos.y.IsInside(SECONDQUADRANTHEIGHT))
+                {
+                    xForce = Mathf.InverseLerp(SECONDQUADRANTWIDTH.x, SECONDQUADRANTWIDTH.y, screenPos.x) - 0.5f;
+                    yForce = Mathf.InverseLerp(SECONDQUADRANTHEIGHT.x, SECONDQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
+                }
+                break;
         }
 
-        
-
+        transform.Translate(Vector3.right * Time.deltaTime * xForce * 5);
+        transform.Translate(Vector3.up * Time.deltaTime * yForce * 5);
     }
 
     /// <summary>

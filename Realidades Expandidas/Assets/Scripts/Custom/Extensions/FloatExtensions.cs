@@ -64,5 +64,21 @@ namespace ExtensionMethods
                 return true;
             return false;
         }
+
+        /// <summary>
+        /// Checks if a value is inside another value.
+        /// </summary>
+        /// <param name="thisFloat">This float.</param>
+        /// <param name="otherVector">The vector to check if the float is inside its values.</param>
+        /// <returns>True if this float is inside the vector values.</returns>
+        public static bool IsInside(this float thisFloat, Vector2 otherVector)
+        {
+            if (thisFloat <= otherVector.y &&
+                thisFloat >= otherVector.x)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

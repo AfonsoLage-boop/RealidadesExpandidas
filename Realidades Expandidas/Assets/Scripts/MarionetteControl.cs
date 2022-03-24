@@ -1,49 +1,54 @@
 using UnityEngine;
-using System;
 using ExtensionMethods;
 
 /// <summary>
-/// Constrains limbs distance.
+/// Controls marionette while constraining limbs distance.
 /// </summary>
-public class DistanceConstrain : MonoBehaviour
+public class MarionetteControl : MonoBehaviour
 {
-    private Vector3 lastFramePosition;
+    private Camera cam;
 
+    // Limb constrain
+    private Vector3 lastFramePosition;
     [SerializeField] private Limb limb;
     [SerializeField] private bool isMainAnchorPoint;
     [SerializeField] private Transform mainAnchorPoint;
     [SerializeField] private Transform anchorOfRadiusOfAction;
     [SerializeField] private float radiusOfAction;
 
+    // Limb disable
     private FixedJoint joint;
+
+    // Finger positions
+    private FingerPosition fingerControl;
+    private Vector2 leftIndexPosition;
+
+    // Screen positions
+    private static Vector2 FIRSTQUADRANTWIDTH = new Vector2(Screen.width / 4, Screen.width / 2);
+    private static Vector2 FIRSTQUADRANTHEIGHT = new Vector2(Screen.width / 4, Screen.width / 2.35f);
+    private static Vector2 FIRSTQUADRANTMIDPOINT = 
+        new Vector2((Screen.width / 4 + Screen.width / 2) / 2, (Screen.width / 4 + Screen.width / 2.35f) / 2);
 
     private void Awake()
     {
+        cam = Camera.main;
         joint = GetComponent<FixedJoint>();
         lastFramePosition = transform.position;
 
         // Fingers
-        fingers = FindObjectsOfType<FingerTip>();
-        foreach (FingerTip finger in fingers)
+        FingerPosition[] fingersControl = FindObjectsOfType<FingerPosition>();
+        foreach (FingerPosition finger in fingersControl)
         {
             if (finger.FingerEnum == FingerEnum.LeftIndex)
             {
-                leftIndex = finger;
-                initialLeftFingerPosition = finger.transform.position;
-                leftIndexPosition = Vector3.zero;
+                fingerControl = finger;
+                break;
             }
         }
     }
 
-    FingerTip[] fingers;
-    FingerTip leftIndex;
-    Vector3 initialLeftFingerPosition;
-    Vector3 leftIndexPosition;
-
-    private void Start()
+    private void OnValidate()
     {
-        
- 
         
     }
 
@@ -52,22 +57,29 @@ public class DistanceConstrain : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        leftIndexPosition = leftIndex.transform.position;
-
-
+        //leftIndexPosition = leftIndex.transform.position;
 
         if (limb == Limb.LeftArm)
         {
-            leftIndexPosition.z = 0;
-            transform.position = leftIndexPosition;
-            
-            
+            //leftIndexPosition.z = 0;
+            //transform.position = leftIndexPosition;
+
+
+
+            Vector3 screenPos = cam.WorldToScreenPoint(fingerControl.transform.position);
+
+            if (screenPos.x.IsInside(FIRSTQUADRANTWIDTH) &&
+                screenPos.y.IsInside(FIRSTQUADRANTHEIGHT))
+            {
+                float xForce = Mathf.InverseLerp(FIRSTQUADRANTWIDTH.x, FIRSTQUADRANTWIDTH.y, screenPos.x) - 0.5f;
+                float yForce = Mathf.InverseLerp(FIRSTQUADRANTHEIGHT.x, FIRSTQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
+
+                transform.Translate(Vector3.right * Time.deltaTime * xForce * 5);
+                transform.Translate(Vector3.up * Time.deltaTime * yForce * 5);
+            }
         }
 
-        int screenWidth = Screen.width;
-        int screenHeight = Screen.height;
-
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(leftIndexPosition);
+        
 
     }
 

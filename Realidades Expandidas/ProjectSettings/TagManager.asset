@@ -8,6 +8,8 @@ TagManager:
   - ThumbLeft
   - IndexRight
   - ThumbRight
+  - PalmLeft
+  - PalmRight
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - MarionetteBody
   - MarionetteController
-  - 
+  - Hands
   - 
   - 
   - 

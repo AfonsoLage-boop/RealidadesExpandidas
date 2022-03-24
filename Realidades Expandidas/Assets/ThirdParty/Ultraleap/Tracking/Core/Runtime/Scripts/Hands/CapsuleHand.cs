@@ -84,8 +84,6 @@ namespace Leap.Unity
         private int _curSphereIndex = 0, _curCylinderIndex = 0;
         private Color _backingDefault = Color.white;
 
-        private int[] currentFingerIDs;
-
         /// <summary>
         /// The type of the Hand model (set to Graphics)
         /// </summary>
@@ -304,16 +302,21 @@ namespace Leap.Unity
 
                     drawSphere(position);
 
+                    // Update finger positions
                     if (_hand.IsLeft)
                     {
                         if (finger.Type == Finger.FingerType.TYPE_INDEX)
                         {
-                            GameObject.FindGameObjectWithTag("IndexLeft").transform.position =
+                            if (indexLeft == null) continue;
+
+                            indexLeft.transform.position =
                                 finger.TipPosition.ToVector3();
                         }
                         if (finger.Type == Finger.FingerType.TYPE_THUMB)
                         {
-                            GameObject.FindGameObjectWithTag("ThumbLeft").transform.position =
+                            if (thumbLeft == null) continue;
+
+                            thumbLeft.transform.position =
                                 finger.TipPosition.ToVector3();
                         }
                     }
@@ -321,12 +324,16 @@ namespace Leap.Unity
                     {
                         if (finger.Type == Finger.FingerType.TYPE_INDEX)
                         {
-                            GameObject.FindGameObjectWithTag("IndexRight").transform.position =
+                            if (indexRight == null) continue;
+
+                            indexRight.transform.position =
                                 finger.TipPosition.ToVector3();
                         }
                         if (finger.Type == Finger.FingerType.TYPE_THUMB)
                         {
-                            GameObject.FindGameObjectWithTag("ThumbRight").transform.position =
+                            if (thumbRight == null) continue;
+
+                            thumbRight.transform.position =
                                 finger.TipPosition.ToVector3();
                         }
                     }
@@ -338,6 +345,24 @@ namespace Leap.Unity
 
             Vector3 palmPosition = _hand.PalmPosition.ToVector3();
             drawSphere(palmPosition, _palmRadius);
+
+            // Update palm positions
+            if (_hand.IsLeft)
+            {
+                if (palmLeft != null)
+                {
+                    palmLeft.transform.position =
+                        palmPosition;
+                }
+            }
+            if (_hand.IsRight)
+            {
+                if (palmRight != null)
+                {
+                    palmRight.transform.position =
+                        palmPosition;
+                }
+            }
 
             Vector3 thumbBaseToPalm = _spherePositions[THUMB_BASE_INDEX] - _hand.PalmPosition.ToVector3();
             Vector3 mockThumbJointPos = _hand.PalmPosition.ToVector3() + Vector3.Reflect(thumbBaseToPalm, _hand.Basis.xBasis.ToVector3());

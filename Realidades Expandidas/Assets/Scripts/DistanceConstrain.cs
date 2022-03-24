@@ -16,21 +16,13 @@ public class DistanceConstrain : MonoBehaviour
     [SerializeField] private float radiusOfAction;
 
     private FixedJoint joint;
-    private readonly float translationForce = 2f;
 
     private void Awake()
     {
         joint = GetComponent<FixedJoint>();
         lastFramePosition = transform.position;
-    }
 
-    FingerTip[] fingers;
-    FingerTip leftIndex;
-    Vector3 initialLeftFingerPosition;
-    Vector3 leftIndexPosition;
-
-    private void Start()
-    {
+        // Fingers
         fingers = FindObjectsOfType<FingerTip>();
         foreach (FingerTip finger in fingers)
         {
@@ -41,6 +33,16 @@ public class DistanceConstrain : MonoBehaviour
                 leftIndexPosition = Vector3.zero;
             }
         }
+    }
+
+    FingerTip[] fingers;
+    FingerTip leftIndex;
+    Vector3 initialLeftFingerPosition;
+    Vector3 leftIndexPosition;
+
+    private void Start()
+    {
+        
  
         
     }
@@ -62,139 +64,11 @@ public class DistanceConstrain : MonoBehaviour
             
         }
 
+        int screenWidth = Screen.width;
+        int screenHeight = Screen.height;
 
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(leftIndexPosition);
 
-        /*
-        if (Input.GetKey(KeyCode.S))
-        {
-            if (limb == Limb.Hips)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    transform.Translate(Vector3.right * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            if (limb == Limb.LeftLeg)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    transform.Translate(Vector3.right * translationForce* Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (limb == Limb.RightLeg)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    transform.Translate(Vector3.right * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            if (limb == Limb.LeftArm)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    transform.Translate(Vector3.right * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.Q))
-        {
-            if (limb == Limb.RightArm)
-            {
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    transform.Translate(Vector3.right * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    transform.Translate(Vector3.left * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    transform.Translate(Vector3.up * translationForce * Time.deltaTime);
-                }
-
-                if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    transform.Translate(Vector3.down * translationForce * Time.deltaTime);
-                }
-            }
-        }
-        */
     }
 
     /// <summary>

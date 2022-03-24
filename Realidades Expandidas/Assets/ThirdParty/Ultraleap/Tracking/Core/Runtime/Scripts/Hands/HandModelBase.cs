@@ -32,6 +32,13 @@ namespace Leap.Unity
     [ExecuteInEditMode]
     public abstract class HandModelBase : MonoBehaviour
     {
+        protected GameObject indexLeft;
+        protected GameObject thumbLeft;
+        protected GameObject indexRight;
+        protected GameObject thumbRight;
+        protected GameObject palmLeft;
+        protected GameObject palmRight;
+
         /// <summary>
         /// Called directly after HandModelBase's InitHand().
         /// </summary>
@@ -169,8 +176,6 @@ namespace Leap.Unity
                         leapProvider.OnFixedFrame -= FixedUpdateFrame;
                         leapProvider.OnFixedFrame += FixedUpdateFrame;
                     }
-
-
                 }
             }
         }
@@ -210,6 +215,12 @@ namespace Leap.Unity
                 leapProvider.OnFixedFrame += FixedUpdateFrame;
             }
 
+            indexLeft = GameObject.FindGameObjectWithTag("IndexLeft");
+            thumbLeft = GameObject.FindGameObjectWithTag("ThumbLeft");
+            indexRight = GameObject.FindGameObjectWithTag("IndexRight");
+            thumbRight = GameObject.FindGameObjectWithTag("ThumbRight");
+            palmLeft = GameObject.FindGameObjectWithTag("PalmLeft");
+            palmRight = GameObject.FindGameObjectWithTag("PalmRight");
         }
 
         private void OnDestroy()

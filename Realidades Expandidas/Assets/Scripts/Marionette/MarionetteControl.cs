@@ -140,14 +140,12 @@ public class MarionetteControl : MonoBehaviour
         Gizmos.DrawSphere(anchorOfRadiusOfAction.transform.position, radiusOfAction);
     }
 
-    /// <summary>
-    /// On limb collision.
-    /// </summary>
-    /// <param name="other">Other collider.q</param>
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.layer == 0)
+        if (collision.gameObject.layer == 0)
+        {
             joint.connectedBody = null;
+        }
     }
 }
 

@@ -14,11 +14,12 @@ public class ObjectPoolCreator : MonoBehaviour
     // IList with pool for every base pool
     private IList<BasePool> listOfGameObjects;
 
-    public static ObjectPool Pool { get; private set; }
+    public ObjectPool Pool { get; private set; }
 
     private void Awake()
     {
         GameObject poolParent = new GameObject();
+        poolParent.name = "Pool Objects Parent";
 
         // Creates a dictionary with gameobject name
         Pool = new ObjectPool(new Dictionary<string, Queue<GameObject>>());

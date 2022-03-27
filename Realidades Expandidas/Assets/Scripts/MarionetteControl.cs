@@ -117,7 +117,8 @@ public class MarionetteControl : MonoBehaviour
 
         if (transform.position != lastFramePosition)
         {
-            if (Vector3.Distance(transform.position, anchorOfRadiusOfAction.position) > radiusOfAction)
+            if (Vector3.Distance(transform.position, anchorOfRadiusOfAction.position) > 
+                radiusOfAction)
             {
                 transform.position =
                     anchorOfRadiusOfAction.position +

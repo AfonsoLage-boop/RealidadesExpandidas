@@ -23,12 +23,14 @@ public class MarionetteControl : MonoBehaviour
     private FingerPosition fingerControl;
 
     // Screen positions
-    private static Vector2 FIRSTQUADRANTWIDTH = new Vector2(Screen.width / 4, Screen.width / 2);
-    private static Vector2 FIRSTQUADRANTHEIGHT = new Vector2(Screen.height / 2, Screen.height / 1.33f);
-    private static Vector2 SECONDQUADRANTWIDTH = new Vector2(Screen.width / 2, Screen.width / 1.33f);
-    private static Vector2 SECONDQUADRANTHEIGHT = new Vector2(Screen.height / 2, Screen.height / 1.33f);
-    private static Vector2 THIRDQUADRANTWIDTH = new Vector2(Screen.width / 2, Screen.width / 1.33f);
-    private static Vector2 THIRDQUADRANTHEIGHT = new Vector2(Screen.height / 4, Screen.height / 2f);
+    private readonly static Vector2 FIRSTQUADRANTWIDTH = new Vector2(Screen.width / 3, Screen.width / 2);
+    private readonly static Vector2 FIRSTQUADRANTHEIGHT = new Vector2(Screen.height / 2, Screen.height / 1.33f);
+    private readonly static Vector2 SECONDQUADRANTWIDTH = new Vector2(Screen.width / 2, Screen.width / 1.5f);
+    private readonly static Vector2 SECONDQUADRANTHEIGHT = new Vector2(Screen.height / 2, Screen.height / 1.33f);
+    private readonly static Vector2 THIRDQUADRANTWIDTH = new Vector2(Screen.width / 2, Screen.width / 1.5f);
+    private readonly static Vector2 THIRDQUADRANTHEIGHT = new Vector2(Screen.height / 4, Screen.height / 2f);
+    private readonly static Vector2 FORTHQUADRANTWIDTH = new Vector2(Screen.width / 3, Screen.width / 2);
+    private readonly static Vector2 FORTHQUADRANTHEIGHT = new Vector2(Screen.height / 4, Screen.height / 2f);
 
     private void Awake()
     {
@@ -100,30 +102,23 @@ public class MarionetteControl : MonoBehaviour
         switch (limb)
         {
             case Limb.LeftArm:
-                if (screenPos.x.IsInside(FIRSTQUADRANTWIDTH) &&
-                    screenPos.y.IsInside(FIRSTQUADRANTHEIGHT))
-                {
-                    xForce = Mathf.InverseLerp(FIRSTQUADRANTWIDTH.x, FIRSTQUADRANTWIDTH.y, screenPos.x) - 0.5f;
-                    yForce = Mathf.InverseLerp(FIRSTQUADRANTHEIGHT.x, FIRSTQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
-                }
+                xForce = Mathf.InverseLerp(FIRSTQUADRANTWIDTH.x, FIRSTQUADRANTWIDTH.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(FIRSTQUADRANTHEIGHT.x, FIRSTQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
                 break;
 
             case Limb.RightArm:
-                if (screenPos.x.IsInside(SECONDQUADRANTWIDTH) &&
-                    screenPos.y.IsInside(SECONDQUADRANTHEIGHT))
-                {
-                    xForce = Mathf.InverseLerp(SECONDQUADRANTWIDTH.x, SECONDQUADRANTWIDTH.y, screenPos.x) - 0.5f;
-                    yForce = Mathf.InverseLerp(SECONDQUADRANTHEIGHT.x, SECONDQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
-                }
+                xForce = Mathf.InverseLerp(SECONDQUADRANTWIDTH.x, SECONDQUADRANTWIDTH.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(SECONDQUADRANTHEIGHT.x, SECONDQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
                 break;
 
             case Limb.RightLeg:
-                if (screenPos.x.IsInside(THIRDQUADRANTWIDTH) &&
-                    screenPos.y.IsInside(THIRDQUADRANTHEIGHT))
-                {
-                    xForce = Mathf.InverseLerp(THIRDQUADRANTWIDTH.x, THIRDQUADRANTWIDTH.y, screenPos.x) - 0.5f;
-                    yForce = Mathf.InverseLerp(THIRDQUADRANTHEIGHT.x, THIRDQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
-                }
+                xForce = Mathf.InverseLerp(THIRDQUADRANTWIDTH.x, THIRDQUADRANTWIDTH.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(THIRDQUADRANTHEIGHT.x, THIRDQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
+                break;
+
+            case Limb.LeftLeg:
+                xForce = Mathf.InverseLerp(FORTHQUADRANTWIDTH.x, FORTHQUADRANTWIDTH.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(FORTHQUADRANTHEIGHT.x, FORTHQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
                 break;
         }
 
@@ -171,9 +166,9 @@ public class MarionetteControl : MonoBehaviour
         if (other.gameObject.layer == 0)
             joint.connectedBody = null;
     }
-
-    /// <summary>
-    /// Enum for limbs.
-    /// </summary>
-    public enum Limb { Hips, LeftArm, RightArm, LeftLeg, RightLeg }
 }
+
+/// <summary>
+/// Enum for limbs.
+/// </summary>
+public enum Limb { Hips, LeftArm, RightArm, LeftLeg, RightLeg }

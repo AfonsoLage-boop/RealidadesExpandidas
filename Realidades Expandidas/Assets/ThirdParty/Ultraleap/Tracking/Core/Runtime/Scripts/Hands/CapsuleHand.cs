@@ -309,15 +309,18 @@ namespace Leap.Unity
                         {
                             if (indexLeft == null) continue;
 
-                            indexLeft.transform.position =
-                                finger.TipPosition.ToVector3();
+                            Vector3 newPosition = finger.TipPosition.ToVector3();
+                            newPosition.z = -3.18f;
+                            indexLeft.transform.position = newPosition;
+
                         }
                         if (finger.Type == Finger.FingerType.TYPE_THUMB)
                         {
                             if (thumbLeft == null) continue;
 
-                            thumbLeft.transform.position =
-                                finger.TipPosition.ToVector3();
+                            Vector3 newPosition = finger.TipPosition.ToVector3();
+                            newPosition.z = -3.18f;
+                            thumbLeft.transform.position = newPosition;
                         }
                     }
                     if (_hand.IsRight)
@@ -326,15 +329,17 @@ namespace Leap.Unity
                         {
                             if (indexRight == null) continue;
 
-                            indexRight.transform.position =
-                                finger.TipPosition.ToVector3();
+                            Vector3 newPosition = finger.TipPosition.ToVector3();
+                            newPosition.z = -3.18f;
+                            indexRight.transform.position = newPosition;
                         }
                         if (finger.Type == Finger.FingerType.TYPE_THUMB)
                         {
                             if (thumbRight == null) continue;
 
-                            thumbRight.transform.position =
-                                finger.TipPosition.ToVector3();
+                            Vector3 newPosition = finger.TipPosition.ToVector3();
+                            newPosition.z = -3.18f;
+                            thumbRight.transform.position = newPosition;
                         }
                     }
                 }
@@ -351,16 +356,18 @@ namespace Leap.Unity
             {
                 if (palmLeft != null)
                 {
-                    palmLeft.transform.position =
-                        palmPosition;
+                    Vector3 newPosition = palmPosition;
+                    newPosition.z = -3.18f;
+                    palmLeft.transform.position = newPosition;
                 }
             }
             if (_hand.IsRight)
             {
                 if (palmRight != null)
                 {
-                    palmRight.transform.position =
-                        palmPosition;
+                    Vector3 newPosition = palmPosition;
+                    newPosition.z = -3.18f;
+                    palmRight.transform.position = newPosition;
                 }
             }
 

@@ -22,7 +22,11 @@ public class MarionetteControl : MonoBehaviour
     // Finger related
     private QuadrantsLimits quadrants;
     [SerializeField] private FingerPosition finger;
+    [SerializeField] private FingerPosition leftPalm;
     [SerializeField] private FingerPosition rightPalm;
+
+    [SerializeField] private RectTransform rectTrans;
+    [SerializeField] private Vector2 rectDistance;
 
     private void Awake()
     {
@@ -37,6 +41,7 @@ public class MarionetteControl : MonoBehaviour
         
     }
 
+
     /// <summary>
     /// Gets limbs input and updates their position.
     /// </summary>
@@ -44,45 +49,61 @@ public class MarionetteControl : MonoBehaviour
     {
         if (finger == null) return;
 
-        float xForce = 0;
-        float yForce = 0;
+        float xForce;
+        float yForce;
 
-        // Updates position to screen point
-        Vector3 screenPos = cam.WorldToScreenPoint(finger.gameObject.transform.position);
-
-        // Moves each limb
-        switch (limb)
+        // Updates rectangles positions to control limbs
+        switch(limb)
         {
-            case Limb.LeftArm:
-                xForce = Mathf.InverseLerp(quadrants.FirstQuadrantWidth.x, quadrants.FirstQuadrantWidth.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(quadrants.FirstQuadrantHeight.x, quadrants.FirstQuadrantHeight.y, screenPos.y) - 0.5f;
-                break;
-
-            case Limb.RightArm:
-                xForce = Mathf.InverseLerp(quadrants.SecondQuadrantWidth.x, quadrants.SecondQuadrantWidth.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(quadrants.SecondQuadrantHeight.x, quadrants.SecondQuadrantHeight.y, screenPos.y) - 0.5f;
-                break;
-
-            case Limb.RightLeg:
-                xForce = Mathf.InverseLerp(quadrants.ThirdQuadrantWidth.x, quadrants.ThirdQuadrantWidth.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(quadrants.ThirdQuadrantHeight.x, quadrants.ThirdQuadrantHeight.y, screenPos.y) - 0.5f;
-                break;
-
             case Limb.LeftLeg:
-                xForce = Mathf.InverseLerp(quadrants.ForthQuadrantWidth.x, quadrants.ForthQuadrantWidth.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(quadrants.ForthQuadrantHeight.x, quadrants.ForthQuadrantHeight.y, screenPos.y) - 0.5f;
+                rectTrans.position = cam.WorldToScreenPoint(
+                    leftPalm.gameObject.transform.position) + 
+                    Vector3.right * rectDistance.x +
+                    Vector3.up * rectDistance.y;
                 break;
-
-            case Limb.Hips:
-
-                screenPos = cam.WorldToScreenPoint(
-                    (finger.gameObject.transform.position + rightPalm.gameObject.transform.position) /2);
-
-                xForce = Mathf.InverseLerp(quadrants.AllQuadrantsWidth.x, quadrants.AllQuadrantsWidth.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(quadrants.AllQuadrantsHeight.x, quadrants.AllQuadrantsHeight.y, screenPos.y) - 0.5f;
+            case Limb.LeftArm:
+                rectTrans.position = cam.WorldToScreenPoint(
+                    leftPalm.gameObject.transform.position) +
+                    Vector3.right * rectDistance.x +
+                    Vector3.up * rectDistance.y;
+                break;
+            case Limb.RightLeg:
+                rectTrans.position = cam.WorldToScreenPoint(
+                    rightPalm.gameObject.transform.position) +
+                    Vector3.right * rectDistance.x +
+                    Vector3.up * rectDistance.y;
+                break;
+            case Limb.RightArm:
+                rectTrans.position = cam.WorldToScreenPoint(
+                    rightPalm.gameObject.transform.position) +
+                    Vector3.right * rectDistance.x +
+                    Vector3.up * rectDistance.y;
                 break;
         }
+        
+        // Updates position to screen point
+        Vector3 screenPos;
 
+        // For hip, it gets the middle point between both hands
+        if(limb == Limb.Hips)
+        {
+            screenPos = cam.WorldToScreenPoint(
+                (leftPalm.gameObject.transform.position + 
+                rightPalm.gameObject.transform.position) / 2);
+        }
+        // For the rest of the limbs, gets finger position
+        else
+        {
+            screenPos = cam.WorldToScreenPoint(finger.gameObject.transform.position);
+        }
+
+        // Gets movement force depending on the distance from the center
+        xForce = Mathf.InverseLerp(rectTrans.position.x, rectTrans.position.x +
+            rectTrans.sizeDelta.x, screenPos.x) - 0.5f;
+        yForce = Mathf.InverseLerp(rectTrans.position.y, rectTrans.position.y +
+            rectTrans.sizeDelta.y, screenPos.y) - 0.5f;
+
+        // Moves limbs
         transform.Translate(Vector3.right * Time.deltaTime * xForce * 5);
         transform.Translate(Vector3.up * Time.deltaTime * yForce * 5);
     }

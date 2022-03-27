@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Class for each finger position.
@@ -9,14 +10,15 @@ public class FingerPosition : MonoBehaviour
     public FingerEnum FingerEnum => fingerTipEnum;
 }
 
+[Flags]
 public enum FingerEnum
 {
-    LeftIndex,
-    LeftThumb,
-    RightIndex,
-    RightThumb,
-    LeftPalm,
-    RightPalm,
+    LeftIndex = 1,
+    LeftThumb = 2,
+    RightIndex = 4,
+    RightThumb = 8,
+    LeftPalm = 16,
+    RightPalm = 32,
 }
 
 

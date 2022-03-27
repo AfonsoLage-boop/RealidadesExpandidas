@@ -19,65 +19,17 @@ public class MarionetteControl : MonoBehaviour
     // Limb disable
     private FixedJoint joint;
 
-    // Finger positions
-    private FingerPosition fingerControl;
-
-    // Screen positions
-    private readonly static Vector2 FIRSTQUADRANTWIDTH = new Vector2(Screen.width / 3, Screen.width / 2);
-    private readonly static Vector2 FIRSTQUADRANTHEIGHT = new Vector2(Screen.height / 2, Screen.height / 1.33f);
-    private readonly static Vector2 SECONDQUADRANTWIDTH = new Vector2(Screen.width / 2, Screen.width / 1.5f);
-    private readonly static Vector2 SECONDQUADRANTHEIGHT = new Vector2(Screen.height / 2, Screen.height / 1.33f);
-    private readonly static Vector2 THIRDQUADRANTWIDTH = new Vector2(Screen.width / 2, Screen.width / 1.5f);
-    private readonly static Vector2 THIRDQUADRANTHEIGHT = new Vector2(Screen.height / 4, Screen.height / 2f);
-    private readonly static Vector2 FORTHQUADRANTWIDTH = new Vector2(Screen.width / 3, Screen.width / 2);
-    private readonly static Vector2 FORTHQUADRANTHEIGHT = new Vector2(Screen.height / 4, Screen.height / 2f);
+    // Finger related
+    private QuadrantsLimits quadrants;
+    [SerializeField] private FingerPosition finger;
+    [SerializeField] private FingerPosition rightPalm;
 
     private void Awake()
     {
         cam = Camera.main;
         joint = GetComponent<FixedJoint>();
+        quadrants = GetComponentInParent<QuadrantsLimits>();
         lastFramePosition = transform.position;
-
-        // Fingers
-        FingerPosition[] fingersControl = FindObjectsOfType<FingerPosition>();
-        foreach (FingerPosition finger in fingersControl)
-        {
-            if (limb == Limb.LeftArm)
-            {
-                if (finger.FingerEnum == FingerEnum.LeftIndex)
-                {
-                    fingerControl = finger;
-                    break;
-                }
-            }
-
-            if (limb == Limb.LeftLeg)
-            {
-                if (finger.FingerEnum == FingerEnum.LeftThumb)
-                {
-                    fingerControl = finger;
-                    break;
-                }
-            }
-
-            if (limb == Limb.RightArm)
-            {
-                if (finger.FingerEnum == FingerEnum.RightIndex)
-                {
-                    fingerControl = finger;
-                    break;
-                }
-            }
-
-            if (limb == Limb.RightLeg)
-            {
-                if (finger.FingerEnum == FingerEnum.RightThumb)
-                {
-                    fingerControl = finger;
-                    break;
-                }
-            }
-        }
     }
 
     private void OnValidate()
@@ -90,35 +42,44 @@ public class MarionetteControl : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (fingerControl == null) return;
+        if (finger == null) return;
 
         float xForce = 0;
         float yForce = 0;
 
         // Updates position to screen point
-        Vector3 screenPos = cam.WorldToScreenPoint(fingerControl.transform.position);
+        Vector3 screenPos = cam.WorldToScreenPoint(finger.gameObject.transform.position);
 
         // Moves each limb
         switch (limb)
         {
             case Limb.LeftArm:
-                xForce = Mathf.InverseLerp(FIRSTQUADRANTWIDTH.x, FIRSTQUADRANTWIDTH.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(FIRSTQUADRANTHEIGHT.x, FIRSTQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
+                xForce = Mathf.InverseLerp(quadrants.FirstQuadrantWidth.x, quadrants.FirstQuadrantWidth.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(quadrants.FirstQuadrantHeight.x, quadrants.FirstQuadrantHeight.y, screenPos.y) - 0.5f;
                 break;
 
             case Limb.RightArm:
-                xForce = Mathf.InverseLerp(SECONDQUADRANTWIDTH.x, SECONDQUADRANTWIDTH.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(SECONDQUADRANTHEIGHT.x, SECONDQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
+                xForce = Mathf.InverseLerp(quadrants.SecondQuadrantWidth.x, quadrants.SecondQuadrantWidth.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(quadrants.SecondQuadrantHeight.x, quadrants.SecondQuadrantHeight.y, screenPos.y) - 0.5f;
                 break;
 
             case Limb.RightLeg:
-                xForce = Mathf.InverseLerp(THIRDQUADRANTWIDTH.x, THIRDQUADRANTWIDTH.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(THIRDQUADRANTHEIGHT.x, THIRDQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
+                xForce = Mathf.InverseLerp(quadrants.ThirdQuadrantWidth.x, quadrants.ThirdQuadrantWidth.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(quadrants.ThirdQuadrantHeight.x, quadrants.ThirdQuadrantHeight.y, screenPos.y) - 0.5f;
                 break;
 
             case Limb.LeftLeg:
-                xForce = Mathf.InverseLerp(FORTHQUADRANTWIDTH.x, FORTHQUADRANTWIDTH.y, screenPos.x) - 0.5f;
-                yForce = Mathf.InverseLerp(FORTHQUADRANTHEIGHT.x, FORTHQUADRANTHEIGHT.y, screenPos.y) - 0.5f;
+                xForce = Mathf.InverseLerp(quadrants.ForthQuadrantWidth.x, quadrants.ForthQuadrantWidth.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(quadrants.ForthQuadrantHeight.x, quadrants.ForthQuadrantHeight.y, screenPos.y) - 0.5f;
+                break;
+
+            case Limb.Hips:
+
+                screenPos = cam.WorldToScreenPoint(
+                    (finger.gameObject.transform.position + rightPalm.gameObject.transform.position) /2);
+
+                xForce = Mathf.InverseLerp(quadrants.AllQuadrantsWidth.x, quadrants.AllQuadrantsWidth.y, screenPos.x) - 0.5f;
+                yForce = Mathf.InverseLerp(quadrants.AllQuadrantsHeight.x, quadrants.AllQuadrantsHeight.y, screenPos.y) - 0.5f;
                 break;
         }
 

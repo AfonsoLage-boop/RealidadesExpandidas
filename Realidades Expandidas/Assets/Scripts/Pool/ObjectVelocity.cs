@@ -17,16 +17,6 @@ public class ObjectVelocity : MonoBehaviour
     private void OnEnable()
     {
         boxCollider.isTrigger = false;
-        //StartCoroutine(UpdateVelocityCoroutine());
-    }
-
-    private IEnumerator UpdateVelocityCoroutine()
-    {
-        rb.velocity = Vector3.zero;
-
-        yield return wffu;
-
-        rb.velocity = transform.forward * 3;
     }
 
     private void FixedUpdate()
@@ -36,6 +26,10 @@ public class ObjectVelocity : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        boxCollider.isTrigger = true;
+        if (collision.gameObject.TryGetComponent(out MarionetteControl marionette))
+        {
+            marionette.Collided();
+            gameObject.SetActive(false);
+        }
     }
 }

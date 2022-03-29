@@ -18,6 +18,7 @@ public class MarionetteControl : MonoBehaviour
 
     // Limb disable
     private FixedJoint joint;
+    private bool collided;
 
     // Finger related
     private QuadrantsLimits quadrants;
@@ -140,11 +141,12 @@ public class MarionetteControl : MonoBehaviour
         Gizmos.DrawSphere(anchorOfRadiusOfAction.transform.position, radiusOfAction);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Collided()
     {
-        if (collision.gameObject.layer == 0)
+        if (collided == false)
         {
             joint.connectedBody = null;
+            collided = true;
         }
     }
 }

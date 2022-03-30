@@ -8,6 +8,10 @@ public abstract class SpawnableObject : MonoBehaviour
     [SerializeField] protected SpawnableObjectStatsSO stats;
     [SerializeField] private SpawnType spawnType;
 
+    // Object disable
+    private readonly float TIMETODISABLE = 10f;
+    private float timeSinceSpawned;
+
     protected BoxCollider boxCollider;
     protected MarionetteParent marionetteParent;
     protected MarionetteControl marionetteLimb;
@@ -23,6 +27,13 @@ public abstract class SpawnableObject : MonoBehaviour
     {
         canCollide = true;
         boxCollider.isTrigger = false;
+        timeSinceSpawned = 0;
+    }
+
+    protected virtual void Update()
+    {
+        timeSinceSpawned += Time.deltaTime;
+        if (timeSinceSpawned > TIMETODISABLE) gameObject.SetActive(false);
     }
 
     protected virtual void FixedUpdate()

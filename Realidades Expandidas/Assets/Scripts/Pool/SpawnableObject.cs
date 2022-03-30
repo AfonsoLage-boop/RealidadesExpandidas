@@ -11,6 +11,7 @@ public abstract class SpawnableObject : MonoBehaviour
     protected BoxCollider boxCollider;
     protected MarionetteParent marionetteParent;
     protected MarionetteControl marionetteLimb;
+    protected bool canCollide;
 
     protected virtual void Awake()
     {
@@ -18,8 +19,11 @@ public abstract class SpawnableObject : MonoBehaviour
         marionetteParent = FindObjectOfType<MarionetteParent>();
     }
 
-    protected virtual void OnEnable() =>
+    protected virtual void OnEnable()
+    {
+        canCollide = true;
         boxCollider.isTrigger = false;
+    }
 
     protected virtual void FixedUpdate()
     {
@@ -29,8 +33,14 @@ public abstract class SpawnableObject : MonoBehaviour
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision) =>
-        OnMarionetteCollision(collision);
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (canCollide)
+        {
+            OnMarionetteCollision(collision);
+            canCollide = false;
+        }
+    }
 
     /// <summary>
     /// Executes collision logic.

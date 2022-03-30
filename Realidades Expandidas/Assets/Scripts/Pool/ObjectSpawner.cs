@@ -30,12 +30,18 @@ public class ObjectSpawner : MonoBehaviour
     private IEnumerator SpawnObjectCoroutine()
     {
         Transform randomTransform;
+        int randomIndex;
 
         do
         {
             randomTransform = positions[Random.Range(0, positions.Count)];
+            randomIndex = (int)Random.Range(0, objectPool.Pool.PoolCount);
 
-            objectPool.Pool.InstantiateFromPool("Low1", randomTransform.position, randomTransform.rotation);
+            //objectPool.Pool.InstantiateFromPool(
+            //    "SlowTime", randomTransform.position, randomTransform.rotation);
+
+            objectPool.Pool.InstantiateFromPool(
+                randomIndex, randomTransform.position, randomTransform.rotation);
 
             yield return wfs;
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Generic struct that creates -T- pools of gameobjects.
@@ -7,6 +8,8 @@ using UnityEngine;
 public struct ObjectPool
 {
     private readonly IDictionary<string, Queue<GameObject>> poolDictionary;
+
+    public float PoolCount => poolDictionary.Count;
 
     public ObjectPool(IDictionary<string, Queue<GameObject>> poolDictionary)
     {
@@ -65,6 +68,17 @@ public struct ObjectPool
         obj.SetActive(true);
         obj.transform.SetPositionAndRotation(position, rotation);
         poolDictionary[name].Enqueue(obj);
+
+        return obj;
+    }
+
+    public GameObject InstantiateFromPool(int index, Vector3 position, Quaternion rotation)
+    {
+
+        GameObject obj = poolDictionary.ElementAt(index).Value.Dequeue();
+        obj.SetActive(true);
+        obj.transform.SetPositionAndRotation(position, rotation);
+        poolDictionary.ElementAt(index).Value.Enqueue(obj);
 
         return obj;
     }

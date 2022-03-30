@@ -9,6 +9,11 @@ public class SpawnableObjectStatsSO : ScriptableObject
     [Range(0.1f, 10f)] [SerializeField] private float defaultWallSpeed = 4;
     [Range(0.1f, 10f)] [SerializeField] private float defaultPowerUpSpeed = 4;
 
+    // Default values
+    public float DefaultWallSpeed => defaultWallSpeed;
+    public float DefaultPowerUpSpeed => defaultPowerUpSpeed;
+
+    // Wall get set
     private float wallSpeed;
     public float WallSpeed
     {
@@ -16,6 +21,7 @@ public class SpawnableObjectStatsSO : ScriptableObject
         set => wallSpeed = value;
     }
 
+    // Power up get set
     private float powerUpSpeed;
     public float PowerUpSpeed
     {

@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectVelocity : MonoBehaviour
+public class Wall : MonoBehaviour
 {
-    private Rigidbody rb;
-    private YieldInstruction wffu;
     private BoxCollider boxCollider;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
     }
 

@@ -151,6 +151,9 @@ public class MarionetteControl : MonoBehaviour
     {
         Gizmos.color = new Color(0, 1, 0, 0.15f);
         Gizmos.DrawSphere(anchorOfRadiusOfAction.transform.position, radiusOfAction);
+
+        Gizmos.color = new Color(0, 0, 1, 0.25f);
+        Gizmos.DrawSphere(transform.position, 0.1f);
     }
 
     public void Collided()

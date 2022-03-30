@@ -21,11 +21,11 @@ public class MarionetteControl : MonoBehaviour
     private bool collided;
 
     // Finger related
-    private QuadrantsLimits quadrants;
     [SerializeField] private FingerPosition finger;
     [SerializeField] private FingerPosition leftPalm;
     [SerializeField] private FingerPosition rightPalm;
 
+    [SerializeField] private Canvas rectCanvas;
     [SerializeField] private RectTransform rectTrans;
     [SerializeField] private Vector2 rectDistance;
 
@@ -33,7 +33,6 @@ public class MarionetteControl : MonoBehaviour
     {
         cam = Camera.main;
         joint = GetComponent<FixedJoint>();
-        quadrants = GetComponentInParent<QuadrantsLimits>();
         lastFramePosition = transform.position;
     }
 
@@ -48,48 +47,64 @@ public class MarionetteControl : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (finger == null) return;
+        if (limb == Limb.Hips) return;
 
-        float xForce;
-        float yForce;
+        Vector3 rectanglePosition;
 
         // Updates rectangles positions to control limbs
         switch(limb)
         {
             case Limb.LeftLeg:
-                rectTrans.position = cam.WorldToScreenPoint(
-                    leftPalm.gameObject.transform.position) + 
+                rectanglePosition =
+                    leftPalm.gameObject.transform.position +
                     Vector3.right * rectDistance.x +
                     Vector3.up * rectDistance.y;
+
                 break;
             case Limb.LeftArm:
-                rectTrans.position = cam.WorldToScreenPoint(
-                    leftPalm.gameObject.transform.position) +
+                rectanglePosition =
+                    leftPalm.gameObject.transform.position +
                     Vector3.right * rectDistance.x +
                     Vector3.up * rectDistance.y;
                 break;
             case Limb.RightLeg:
-                rectTrans.position = cam.WorldToScreenPoint(
-                    rightPalm.gameObject.transform.position) +
+                rectanglePosition =
+                    rightPalm.gameObject.transform.position +
                     Vector3.right * rectDistance.x +
                     Vector3.up * rectDistance.y;
                 break;
             case Limb.RightArm:
-                rectTrans.position = cam.WorldToScreenPoint(
-                    rightPalm.gameObject.transform.position) +
+                rectanglePosition =
+                    rightPalm.gameObject.transform.position +
                     Vector3.right * rectDistance.x +
                     Vector3.up * rectDistance.y;
                 break;
+            default:
+                rectanglePosition = Vector3.zero;
+                break;
         }
-        
+
+        rectTrans.position = cam.WorldToScreenPoint(rectanglePosition);
+    }
+
+    /// <summary>
+    /// Constrains limbs positions.
+    /// </summary>
+    private void FixedUpdate()
+    {
+        if (finger == null) return;
+
+        float xForce;
+        float yForce;
+
         // Updates position to screen point
         Vector3 screenPos;
 
         // For hip, it gets the middle point between both hands
-        if(limb == Limb.Hips)
+        if (limb == Limb.Hips)
         {
             screenPos = cam.WorldToScreenPoint(
-                (leftPalm.gameObject.transform.position + 
+                (leftPalm.gameObject.transform.position +
                 rightPalm.gameObject.transform.position) / 2);
         }
         // For the rest of the limbs, gets finger position
@@ -99,23 +114,21 @@ public class MarionetteControl : MonoBehaviour
         }
 
         // Gets movement force depending on the distance from the center
-        xForce = Mathf.InverseLerp(rectTrans.position.x, rectTrans.position.x +
-            rectTrans.sizeDelta.x, screenPos.x) - 0.5f;
-        yForce = Mathf.InverseLerp(rectTrans.position.y, rectTrans.position.y +
-            rectTrans.sizeDelta.y, screenPos.y) - 0.5f;
+        xForce = Mathf.InverseLerp(rectTrans.position.x, 
+            rectTrans.position.x + rectTrans.sizeDelta.x * rectCanvas.scaleFactor, 
+            screenPos.x) - 0.5f;
+        yForce = Mathf.InverseLerp(rectTrans.position.y, 
+            rectTrans.position.y + rectTrans.sizeDelta.y * rectCanvas.scaleFactor, 
+            screenPos.y) - 0.5f;
 
         // Moves limbs
         transform.Translate(Vector3.right * Time.deltaTime * xForce * 5);
         transform.Translate(Vector3.up * Time.deltaTime * yForce * 5);
-    }
 
-    /// <summary>
-    /// Constrains limbs positions.
-    /// </summary>
-    private void FixedUpdate()
-    {
+        // Positions Z correction
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
+        // Positions limit correction
         if (transform.position != lastFramePosition)
         {
             if (Vector3.Distance(transform.position, anchorOfRadiusOfAction.position) > 
@@ -127,7 +140,6 @@ public class MarionetteControl : MonoBehaviour
                     radiusOfAction;
             }
             
-
             lastFramePosition = transform.position;
         }
     }

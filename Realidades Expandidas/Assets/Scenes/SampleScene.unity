@@ -1084,6 +1084,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1965586729}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: rectCanvas
+      value: 
+      objectReference: {fileID: 547430966}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: radiusOfAction
       value: 0.7
       objectReference: {fileID: 0}
@@ -4242,8 +4246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -134.798, y: -189}
-  m_SizeDelta: {x: 269.596, y: 229.0195}
+  m_AnchoredPosition: {x: -212.381, y: -180.416}
+  m_SizeDelta: {x: 424.762, y: 360.832}
   m_Pivot: {x: 0.000000009313226, y: -0.000000007450581}
 --- !u!114 &1736723609
 MonoBehaviour:
@@ -4307,6 +4311,10 @@ PrefabInstance:
       propertyPath: rightPalm
       value: 
       objectReference: {fileID: 1965586729}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: rectCanvas
+      value: 
+      objectReference: {fileID: 547430966}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: radiusOfAction
       value: 0.36
@@ -4975,6 +4983,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1965586729}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: rectCanvas
+      value: 
+      objectReference: {fileID: 547430966}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: radiusOfAction
       value: 0.36
       objectReference: {fileID: 0}
@@ -5212,6 +5224,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1965586729}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: rectCanvas
+      value: 
+      objectReference: {fileID: 547430966}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: firstQuadrant
       value: 
       objectReference: {fileID: 1488906093}
@@ -5420,6 +5436,10 @@ PrefabInstance:
       propertyPath: rightPalm
       value: 
       objectReference: {fileID: 1965586729}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: rectCanvas
+      value: 
+      objectReference: {fileID: 547430966}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: legDistance.x
       value: 88.8

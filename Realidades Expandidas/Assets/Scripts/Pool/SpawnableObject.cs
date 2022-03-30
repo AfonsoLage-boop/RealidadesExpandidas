@@ -5,7 +5,8 @@ using UnityEngine;
 /// </summary>
 public abstract class SpawnableObject : MonoBehaviour
 {
-    [Range(0.1f, 10f)] [SerializeField] private float speed = 4;
+    [SerializeField] protected SpawnableObjectStatsSO stats;
+    [SerializeField] private SpawnType spawnType;
 
     protected BoxCollider boxCollider;
     protected MarionetteParent marionetteParent;
@@ -20,8 +21,13 @@ public abstract class SpawnableObject : MonoBehaviour
     protected virtual void OnEnable() =>
         boxCollider.isTrigger = false;
 
-    protected virtual void FixedUpdate() =>
+    protected virtual void FixedUpdate()
+    {
+        float speed = spawnType == 
+            SpawnType.Wall ? stats.WallSpeed : stats.PowerUpSpeed;
+        
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
+    }
 
     private void OnCollisionEnter(Collision collision) =>
         OnMarionetteCollision(collision);
@@ -31,4 +37,6 @@ public abstract class SpawnableObject : MonoBehaviour
     /// </summary>
     /// <param name="collision">Marionette collision.</param>
     protected abstract void OnMarionetteCollision(Collision collision);
+
+    protected enum SpawnType { Wall, PowerUp, }
 }

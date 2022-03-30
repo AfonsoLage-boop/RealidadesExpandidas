@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used by every wall.
+/// </summary>
 public class Wall : MonoBehaviour
 {
     private BoxCollider boxCollider;
+    private MarionetteParent marionetteParent;
+    private MarionetteControl marionetteLimb;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
+        marionetteParent = FindObjectOfType<MarionetteParent>();
     }
 
     private void OnEnable()
@@ -23,9 +27,9 @@ public class Wall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out MarionetteControl marionette))
+        if (collision.gameObject.TryGetComponent(out marionetteLimb))
         {
-            marionette.Collided();
+            marionetteParent.WallCollide();
             gameObject.SetActive(false);
         }
     }

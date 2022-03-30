@@ -16,10 +16,6 @@ public class MarionetteControl : MonoBehaviour
     [SerializeField] private Transform anchorOfRadiusOfAction;
     [SerializeField] private float radiusOfAction;
 
-    // Limb disable
-    private FixedJoint joint;
-    private bool collided;
-
     // Finger related
     [SerializeField] private FingerPosition finger;
     [SerializeField] private FingerPosition leftPalm;
@@ -32,15 +28,8 @@ public class MarionetteControl : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main;
-        joint = GetComponent<FixedJoint>();
         lastFramePosition = transform.position;
     }
-
-    private void OnValidate()
-    {
-        
-    }
-
 
     /// <summary>
     /// Gets limbs input and updates their position.
@@ -154,15 +143,6 @@ public class MarionetteControl : MonoBehaviour
 
         Gizmos.color = new Color(0, 0, 1, 0.25f);
         Gizmos.DrawSphere(transform.position, 0.1f);
-    }
-
-    public void Collided()
-    {
-        if (collided == false)
-        {
-            joint.connectedBody = null;
-            collided = true;
-        }
     }
 }
 

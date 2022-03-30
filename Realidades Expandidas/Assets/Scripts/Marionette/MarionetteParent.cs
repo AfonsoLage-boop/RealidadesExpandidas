@@ -1,18 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used by marionette parent.
+/// </summary>
 public class MarionetteParent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Limb disable
+    private FixedJoint[] joints;
+    private MarionetteControl[] marionetteControls;
+    private bool collided;
+
+    private void Awake()
     {
-        
+        joints = GetComponentsInChildren<FixedJoint>();
+        marionetteControls = GetComponentsInChildren<MarionetteControl>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void WallCollide()
     {
-        
+        if (collided == false)
+        {
+            foreach (MarionetteControl marionetteControl in marionetteControls)
+            {
+                marionetteControl.gameObject.SetActive(false);
+            }
+
+            foreach (FixedJoint joint in joints)
+            {
+                joint.connectedBody = null;
+            }
+
+            collided = true;
+        }
     }
 }

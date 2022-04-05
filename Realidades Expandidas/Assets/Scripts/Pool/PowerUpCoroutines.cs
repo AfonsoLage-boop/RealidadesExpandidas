@@ -12,12 +12,13 @@ public class PowerUpCoroutines : MonoBehaviour
 
         float enteredTime = Time.time;
         float currentTime = Time.time;
+
         while (currentTime < enteredTime + powerUps.SlowMotionDuration)
         {
+            Debug.Log("TEMP");
             currentTime = Time.time;
             yield return null;
         }
-
         stats.WallSpeed = stats.DefaultWallSpeed;
     }
 }

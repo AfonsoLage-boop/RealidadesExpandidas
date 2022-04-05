@@ -13,9 +13,9 @@ public class Wall : SpawnableObject
     {
         if (collision.gameObject.TryGetComponent(out marionetteLimb))
         {
-            // marionetteParent.WallCollide();
+            marionetteParent.WallCollide();
         }
 
-        // gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

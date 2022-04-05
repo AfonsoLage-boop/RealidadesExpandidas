@@ -15,7 +15,6 @@ public class PowerUpCoroutines : MonoBehaviour
 
         while (currentTime < enteredTime + powerUps.SlowMotionDuration)
         {
-            Debug.Log("TEMP");
             currentTime = Time.time;
             yield return null;
         }

@@ -31,11 +31,12 @@ public class ObjectSpawner : MonoBehaviour
     {
         Transform randomTransform;
         int randomIndex;
-
+        System.Random rand = new System.Random(5);
+        
         do
         {
-            randomTransform = positions[Random.Range(0, positions.Count)];
-            randomIndex = (int)Random.Range(0, objectPool.Pool.PoolCount);
+            randomTransform = positions[rand.Next(0, positions.Count)];
+            randomIndex = rand.Next(0, (int)objectPool.Pool.PoolCount);
 
             //objectPool.Pool.InstantiateFromPool(
             //    "SlowTime", randomTransform.position, randomTransform.rotation);

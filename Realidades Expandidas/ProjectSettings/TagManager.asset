@@ -17,14 +17,14 @@ TagManager:
   - 
   - Water
   - UI
-  - MarionetteBody
-  - MarionetteController
+  - MarionetteBodyMesh
+  - MarionetteControllerHanger
   - Hands
-  - Positions
+  - FingerPositions
   - SpawnPositions
-  - Object
-  - MarionetteMatchPosition
-  - 
+  - PowerUp
+  - MarionetteMatchPositionOnShader
+  - MarionetteMatchPositionOnMarionette
   - 
   - 
   - 

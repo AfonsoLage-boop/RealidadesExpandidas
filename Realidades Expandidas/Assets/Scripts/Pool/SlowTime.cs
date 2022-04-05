@@ -14,7 +14,7 @@ public class SlowTime : PowerUp
 
     public override void ExecuteBoost()
     {
-        StartCoroutine(coroutineRunner.SlowTimeCoroutine());
+        coroutineRunner.StartCoroutine(coroutineRunner.SlowTimeCoroutine());
         gameObject.SetActive(false);
     }
 }

@@ -24,7 +24,8 @@ public class RemoveComponentName : MonoBehaviour
 
 		foreach (var c in sphereCols)
 		{
-			DestroyImmediate(c);
+			if (c.gameObject.layer != 12)
+				DestroyImmediate(c);
 		}
 
 		Component[] boxCols = GetComponentsInChildren(typeof(BoxCollider), true);

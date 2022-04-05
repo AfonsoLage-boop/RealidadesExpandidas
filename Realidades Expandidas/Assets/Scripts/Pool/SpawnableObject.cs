@@ -39,7 +39,7 @@ public abstract class SpawnableObject : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         float speed = spawnType == 
-            SpawnType.Wall ? stats.WallSpeed : stats.PowerUpSpeed;
+            SpawnType.MatchPosition ? stats.WallSpeed : stats.PowerUpSpeed;
         
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
     }
@@ -59,5 +59,5 @@ public abstract class SpawnableObject : MonoBehaviour
     /// <param name="collision">Marionette collision.</param>
     protected abstract void OnMarionetteCollision(Collision collision);
 
-    protected enum SpawnType { Wall, PowerUp, }
+    protected enum SpawnType { MatchPosition, PowerUp, }
 }

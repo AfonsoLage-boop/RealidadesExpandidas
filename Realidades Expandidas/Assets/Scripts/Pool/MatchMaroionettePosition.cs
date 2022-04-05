@@ -7,17 +7,17 @@ public class MatchMaroionettePosition : SpawnableObject
 {
     private int positionsMatch;
 
-    protected override void OnMarionetteCollision(Collision collision)
+    protected override void OnMarionetteCollision(Collider collider)
     {
-        if (collision.gameObject.layer == 14)
+        if (collider.gameObject.layer == 14)
         {
             if (positionsMatch == 4)
             {
-                Debug.Log("4 Matches");
+                Debug.Log("Good");
             }
             else
             {
-                Debug.Log("Not 4 Matches");
+                Debug.Log("Bad");
             }
         }
     }

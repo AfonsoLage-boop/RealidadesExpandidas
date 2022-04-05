@@ -7,6 +7,6 @@ public abstract class PowerUp : SpawnableObject, IPowerUp
 {
     public abstract void ExecuteBoost();
 
-    protected override void OnMarionetteCollision(Collision collision) =>
+    protected override void OnMarionetteCollision(Collider collider) =>
         ExecuteBoost();
 }

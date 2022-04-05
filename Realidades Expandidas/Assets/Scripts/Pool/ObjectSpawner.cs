@@ -41,10 +41,22 @@ public class ObjectSpawner : MonoBehaviour
             //objectPool.Pool.InstantiateFromPool(
             //    "SlowTime", randomTransform.position, randomTransform.rotation);
 
-            objectPool.Pool.InstantiateFromPool(
+            GameObject spawnedObj = objectPool.Pool.InstantiateFromPool(
                 randomIndex, randomTransform.position, randomTransform.rotation);
 
             yield return wfs;
+
+            // Safe distance to spawn next object
+            if (spawnedObj.activeSelf)
+            {
+                while (Vector3.Distance(randomTransform.transform.position,
+                    spawnedObj.transform.position) < 7f)
+                {
+                    if (spawnedObj.activeSelf == false) break;
+
+                    yield return null;
+                }
+            }
 
         } while (true);
     }

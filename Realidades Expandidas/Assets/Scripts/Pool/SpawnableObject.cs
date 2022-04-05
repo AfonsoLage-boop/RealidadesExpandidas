@@ -44,11 +44,11 @@ public abstract class SpawnableObject : MonoBehaviour
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         if (canCollide)
         {
-            OnMarionetteCollision(collision);
+            OnMarionetteCollision(collider);
             canCollide = false;
         }
     }
@@ -56,8 +56,8 @@ public abstract class SpawnableObject : MonoBehaviour
     /// <summary>
     /// Executes collision logic.
     /// </summary>
-    /// <param name="collision">Marionette collision.</param>
-    protected abstract void OnMarionetteCollision(Collision collision);
+    /// <param name="collider">Marionette collision.</param>
+    protected abstract void OnMarionetteCollision(Collider collider);
 
     protected enum SpawnType { MatchPosition, PowerUp, }
 }

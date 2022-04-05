@@ -25,6 +25,12 @@ public class MarionetteControl : MonoBehaviour
     [SerializeField] private RectTransform rectTrans;
     [SerializeField] private Vector2 rectDistance;
 
+    [SerializeField] private Transform legsStretchTransform;
+    [Range(0.1f, 2f)] [SerializeField] private float legsStretchLimit = 0.92f;
+
+    [SerializeField] private Transform armsStretchTransform;
+    [Range(0.1f, 2f)] [SerializeField] private float armsStretchLimit = 0.92f;
+
     private void Awake()
     {
         cam = Camera.main;
@@ -130,6 +136,28 @@ public class MarionetteControl : MonoBehaviour
             }
             
             lastFramePosition = transform.position;
+        }
+
+        // Limits limbs stretching
+        if (limb == Limb.LeftLeg || limb == Limb.RightLeg)
+        {
+            if (Vector3.Distance(transform.position, legsStretchTransform.position) > legsStretchLimit)
+            {
+                transform.position =
+                    legsStretchTransform.position +
+                    legsStretchTransform.position.Direction(transform.position) * legsStretchLimit;
+            }
+        }
+
+        // Limits limbs stretching
+        if (limb == Limb.LeftArm || limb == Limb.RightArm)
+        {
+            if (Vector3.Distance(transform.position, armsStretchTransform.position) > armsStretchLimit)
+            {
+                transform.position =
+                    armsStretchTransform.position +
+                    armsStretchTransform.position.Direction(transform.position) * armsStretchLimit;
+            }
         }
     }
 

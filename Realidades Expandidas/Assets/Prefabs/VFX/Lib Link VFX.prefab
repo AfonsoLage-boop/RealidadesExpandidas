@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2905899572248231178}
   - component: {fileID: 2033494722}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lib Link VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9009765238296057789}
   - component: {fileID: 9009765238296057788}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 9009765239037068089}
   - component: {fileID: 9009765239037068091}
   - component: {fileID: 9009765239037068090}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4991,7 +4991,7 @@ GameObject:
   - component: {fileID: 9009765239451733084}
   - component: {fileID: 9009765239451733086}
   - component: {fileID: 9009765239451733085}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9854,6 +9854,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5af5e58654d232340a319dbbddda9bd7, type: 3}
       propertyPath: m_Name
       value: Joint
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5af5e58654d232340a319dbbddda9bd7, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af5e58654d232340a319dbbddda9bd7, type: 3}

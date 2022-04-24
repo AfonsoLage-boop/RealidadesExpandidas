@@ -46,27 +46,16 @@ public class SpawnableObjectStatsSO : ScriptableObject
         set => powerUpSpeed = value;
     }
 
-    // Speed multiplier logic
-    private int attemptsSucceeded;
-    public int AttemptsSucceeded
+    public void IncrementSpeed()
     {
-        get => attemptsSucceeded;
-        set
-        {
-            attemptsSucceeded = value;
-            if (value != 0 && attemptsSucceeded % triesRequiredToIncrement == 0)
-            {
-                WallSpeed *= speedIncrementMultiplier;
-                PowerUpSpeed *= speedIncrementMultiplier;
-                Debug.Log("Speed multiplied. Current wall speed = " + WallSpeed);
-            }
-        }
+        WallSpeed *= speedIncrementMultiplier;
+        PowerUpSpeed *= speedIncrementMultiplier;
+        Debug.Log("Speed multiplied. Current wall speed = " + WallSpeed);
     }
 
     private void OnEnable()
     {
         WallSpeed = defaultWallSpeed;
         PowerUpSpeed = defaultPowerUpSpeed;
-        AttemptsSucceeded = 0;
     }
 }

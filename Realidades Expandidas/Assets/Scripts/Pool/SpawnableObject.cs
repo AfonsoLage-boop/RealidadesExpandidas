@@ -7,6 +7,7 @@ public abstract class SpawnableObject : MonoBehaviour
 {
     [SerializeField] protected int layerToCollideWith;
     [SerializeField] protected SpawnableObjectStatsSO stats;
+    [SerializeField] protected GameplayStatisticsSO statistics;
     [SerializeField] private SpawnType spawnType;
 
     // Object disable

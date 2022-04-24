@@ -20,6 +20,7 @@ public class MatchMaroionettePosition : SpawnableObject
             if (positionsMatch == 4)
             {
                 Debug.Log("Good");
+                stats.AttemptsSucceeded++;
             }
             else
             {

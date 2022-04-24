@@ -15,3 +15,6 @@ MonoBehaviour:
   defaultSpawnDelay: 2.5
   defaultWallSpeed: 4
   defaultPowerUpSpeed: 4
+  triesRequiredToIncrement: 4
+  speedIncrementMultiplier: 1.1
+  maximumSpeedOfObjects: 10

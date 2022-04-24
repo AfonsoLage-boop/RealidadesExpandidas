@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
+    [SerializeField] private SpawnableObjectStatsSO spawnableObjectsStats;
     private YieldInstruction wfs;
     private ObjectPoolCreator objectPool;
 
@@ -12,7 +13,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Awake()
     {
-        wfs = new WaitForSeconds(2.5f);
+        wfs = new WaitForSeconds(spawnableObjectsStats.DefaultSpawnDelay);
         objectPool = FindObjectOfType<ObjectPoolCreator>();
         positions = new List<Transform>();
     }

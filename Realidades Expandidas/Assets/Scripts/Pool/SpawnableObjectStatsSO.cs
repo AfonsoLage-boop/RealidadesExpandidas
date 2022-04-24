@@ -6,10 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Spawnable Object Stats", menuName = "Spawnable Objects")]
 public class SpawnableObjectStatsSO : ScriptableObject
 {
+    [Range(0.1f, 10f)] [SerializeField] private float defaultSpawnDelay = 2.5f;
     [Range(0.1f, 10f)] [SerializeField] private float defaultWallSpeed = 4;
     [Range(0.1f, 10f)] [SerializeField] private float defaultPowerUpSpeed = 4;
 
     // Default values
+    public float DefaultSpawnDelay => defaultSpawnDelay;
     public float DefaultWallSpeed => defaultWallSpeed;
     public float DefaultPowerUpSpeed => defaultPowerUpSpeed;
 

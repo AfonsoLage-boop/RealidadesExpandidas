@@ -5,6 +5,7 @@ using UnityEngine;
 /// </summary>
 public abstract class SpawnableObject : MonoBehaviour
 {
+    [Header("Serialized Components")]
     [SerializeField] protected int layerToCollideWith;
     [SerializeField] protected SpawnableObjectStatsSO stats;
     [SerializeField] protected GameplayStatisticsSO statistics;
@@ -14,13 +15,18 @@ public abstract class SpawnableObject : MonoBehaviour
     private readonly float TIMETODISABLE = 10f;
     private float timeSinceSpawned;
 
+    // Collisions
     protected MarionetteParent marionetteParent;
     protected MarionetteControl marionetteLimb;
     protected bool canCollide;
 
+    // Statistics
+    private TextStatistics textStatistics;
+
     protected virtual void Awake()
     {
         marionetteParent = FindObjectOfType<MarionetteParent>();
+        textStatistics = FindObjectOfType<TextStatistics>();
     }
 
     protected virtual void OnEnable()
@@ -51,6 +57,7 @@ public abstract class SpawnableObject : MonoBehaviour
             {
                 OnMarionetteCollision(collider);
                 canCollide = false;
+                textStatistics.UpdateText();
             }
         }
     }

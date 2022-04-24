@@ -8,6 +8,10 @@ public class ObjectSpawner : MonoBehaviour
     private YieldInstruction wfs;
     private ObjectPoolCreator objectPool;
 
+    // Minimum distance
+    [SerializeField] private GameObject minimumDistanceGameObject;
+    private float minimumDistance;
+
     // Positions
     private IList<Transform> positions;
 
@@ -16,6 +20,8 @@ public class ObjectSpawner : MonoBehaviour
         wfs = new WaitForSeconds(spawnableObjectsStats.DefaultSpawnDelay);
         objectPool = FindObjectOfType<ObjectPoolCreator>();
         positions = new List<Transform>();
+        minimumDistance = 
+            Vector3.Distance(transform.position, minimumDistanceGameObject.transform.position);
     }
 
     private void Start()
@@ -39,9 +45,6 @@ public class ObjectSpawner : MonoBehaviour
             randomTransform = positions[rand.Next(0, positions.Count)];
             randomIndex = rand.Next(0, (int)objectPool.Pool.PoolCount);
 
-            //objectPool.Pool.InstantiateFromPool(
-            //    "SlowTime", randomTransform.position, randomTransform.rotation);
-
             GameObject spawnedObj = objectPool.Pool.InstantiateFromPool(
                 randomIndex, randomTransform.position, randomTransform.rotation);
 
@@ -51,7 +54,7 @@ public class ObjectSpawner : MonoBehaviour
             if (spawnedObj.activeSelf)
             {
                 while (Vector3.Distance(randomTransform.transform.position,
-                    spawnedObj.transform.position) < 7f)
+                    spawnedObj.transform.position) < minimumDistance)
                 {
                     if (spawnedObj.activeSelf == false) break;
 

@@ -10,6 +10,7 @@ TagManager:
   - ThumbRight
   - PalmLeft
   - PalmRight
+  - MatchTrigger
   layers:
   - Default
   - TransparentFX

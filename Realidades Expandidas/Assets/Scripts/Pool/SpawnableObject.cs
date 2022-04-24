@@ -5,6 +5,7 @@ using UnityEngine;
 /// </summary>
 public abstract class SpawnableObject : MonoBehaviour
 {
+    [SerializeField] protected int layerToCollideWith;
     [SerializeField] protected SpawnableObjectStatsSO stats;
     [SerializeField] private SpawnType spawnType;
 
@@ -12,21 +13,18 @@ public abstract class SpawnableObject : MonoBehaviour
     private readonly float TIMETODISABLE = 10f;
     private float timeSinceSpawned;
 
-    protected BoxCollider boxCollider;
     protected MarionetteParent marionetteParent;
     protected MarionetteControl marionetteLimb;
     protected bool canCollide;
 
     protected virtual void Awake()
     {
-        boxCollider = GetComponent<BoxCollider>();
         marionetteParent = FindObjectOfType<MarionetteParent>();
     }
 
     protected virtual void OnEnable()
     {
         canCollide = true;
-        boxCollider.isTrigger = false;
         timeSinceSpawned = 0;
     }
 
@@ -46,10 +44,13 @@ public abstract class SpawnableObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (canCollide)
+        if (collider.gameObject.layer == layerToCollideWith)
         {
-            OnMarionetteCollision(collider);
-            canCollide = false;
+            if (canCollide)
+            {
+                OnMarionetteCollision(collider);
+                canCollide = false;
+            }
         }
     }
 

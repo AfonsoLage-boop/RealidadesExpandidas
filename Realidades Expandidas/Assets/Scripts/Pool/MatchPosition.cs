@@ -19,7 +19,7 @@ public class MatchPosition : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Marionette position triggers
-        if (other.gameObject.layer == 12)
+        if (other.gameObject.layer == 13)
         {
             if (contactCount == false)
             {

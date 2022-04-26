@@ -1781,6 +1781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlWithKeyboard: 1
+  translationForce: 2.5
 --- !u!1 &617910567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4791153749335152941, guid: 0798861f7d3e62a418a1a23cf781d696, type: 3}

@@ -94,7 +94,6 @@ public class MarionetteControl : MonoBehaviour
     {
         // If the marionette is being controlled with the keyboard, ignores everything else below
         #region Keyboard Control
-        float translationForce = 2f;
         if (marionetteParent.ControlWithKeyboard)
         {
             if (Input.GetKey(KeyCode.S))
@@ -103,22 +102,22 @@ public class MarionetteControl : MonoBehaviour
                 {
                     if (Input.GetKey(KeyCode.LeftArrow))
                     {
-                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
-                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.UpArrow))
                     {
-                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.DownArrow))
                     {
-                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
                     }
                 }
             }
@@ -129,22 +128,22 @@ public class MarionetteControl : MonoBehaviour
                 {
                     if (Input.GetKey(KeyCode.LeftArrow))
                     {
-                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
-                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.UpArrow))
                     {
-                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.DownArrow))
                     {
-                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
                     }
                 }
             }
@@ -155,22 +154,22 @@ public class MarionetteControl : MonoBehaviour
                 {
                     if (Input.GetKey(KeyCode.LeftArrow))
                     {
-                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
-                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.UpArrow))
                     {
-                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.DownArrow))
                     {
-                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
                     }
                 }
             }
@@ -181,22 +180,22 @@ public class MarionetteControl : MonoBehaviour
                 {
                     if (Input.GetKey(KeyCode.LeftArrow))
                     {
-                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
-                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.UpArrow))
                     {
-                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.DownArrow))
                     {
-                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
                     }
                 }
             }
@@ -207,22 +206,22 @@ public class MarionetteControl : MonoBehaviour
                 {
                     if (Input.GetKey(KeyCode.LeftArrow))
                     {
-                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
-                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.UpArrow))
                     {
-                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
                     }
 
                     if (Input.GetKey(KeyCode.DownArrow))
                     {
-                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
                     }
                 }
             }

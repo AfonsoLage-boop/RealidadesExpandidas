@@ -31,10 +31,13 @@ public class MarionetteControl : MonoBehaviour
     [SerializeField] private Transform armsStretchTransform;
     [Range(0.1f, 2f)] [SerializeField] private float armsStretchLimit = 0.92f;
 
+    private MarionetteParent marionetteParent;
+
     private void Awake()
     {
         cam = Camera.main;
         lastFramePosition = transform.position;
+        marionetteParent = GetComponentInParent<MarionetteParent>();
     }
 
     /// <summary>
@@ -44,10 +47,12 @@ public class MarionetteControl : MonoBehaviour
     {
         if (limb == Limb.Hips) return;
 
+        if (marionetteParent.ControlWithKeyboard) return;
+
         Vector3 rectanglePosition;
 
         // Updates rectangles positions to control limbs
-        switch(limb)
+        switch (limb)
         {
             case Limb.LeftLeg:
                 rectanglePosition =
@@ -87,6 +92,145 @@ public class MarionetteControl : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        // If the marionette is being controlled with the keyboard, ignores everything else below
+        #region Keyboard Control
+        float translationForce = 2f;
+        if (marionetteParent.ControlWithKeyboard)
+        {
+            if (Input.GetKey(KeyCode.S))
+            {
+                if (limb == Limb.Hips)
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                    }
+                }
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                if (limb == Limb.LeftLeg)
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                    }
+                }
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                if (limb == Limb.RightLeg)
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                    }
+                }
+            }
+
+            if (Input.GetKey(KeyCode.Q))
+            {
+                if (limb == Limb.LeftArm)
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                    }
+                }
+            }
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (limb == Limb.RightArm)
+                {
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        transform.Translate(Vector3.left * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        transform.Translate(Vector3.right * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        transform.Translate(Vector3.up * translationForce * Time.deltaTime);
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        transform.Translate(Vector3.down * translationForce * Time.deltaTime);
+                    }
+                }
+            }
+            return;
+        }
+        #endregion
+
+        // If the ragdoll is being controlled with lipmotion
         if (finger == null) return;
 
         float xForce;

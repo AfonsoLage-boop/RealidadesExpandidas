@@ -1780,6 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5215bc6635221f34b8eb892db07db6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlWithKeyboard: 1
 --- !u!1 &617910567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4791153749335152941, guid: 0798861f7d3e62a418a1a23cf781d696, type: 3}
@@ -1958,6 +1959,10 @@ PrefabInstance:
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: isMainAnchorPoint
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: controlWithKeyboard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: armsStretchTransform
@@ -2836,6 +2841,10 @@ PrefabInstance:
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: isMainAnchorPoint
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: controlWithKeyboard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: armsStretchTransform
@@ -4641,6 +4650,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: controlWithKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: armsStretchTransform
       value: 
       objectReference: {fileID: 1863528204}
@@ -5568,6 +5581,10 @@ PrefabInstance:
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: isMainAnchorPoint
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
+      propertyPath: controlWithKeyboard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1260993243091508451, guid: 3e345db0640c0214195062a33e97beff, type: 3}
       propertyPath: armsStretchTransform

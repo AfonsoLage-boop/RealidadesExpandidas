@@ -5,6 +5,11 @@ using UnityEngine;
 /// </summary>
 public class MarionetteParent : MonoBehaviour
 {
+    [Header("Keyboard or Hands control")]
+    [SerializeField] private bool controlWithKeyboard;
+    public bool ControlWithKeyboard => controlWithKeyboard;
+
+
     // Limb disable
     private FixedJoint[] joints;
     private MarionetteControl[] marionetteControls;

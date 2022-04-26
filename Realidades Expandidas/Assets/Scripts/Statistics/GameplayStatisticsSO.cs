@@ -6,7 +6,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Gameplay Statistics", menuName = "Gameplay Statistics")]
 public class GameplayStatisticsSO : ScriptableObject
 {
+    [Range(1, 10)] [SerializeField] private int defaultLives;
     [SerializeField] private SpawnableObjectStatsSO spawnableObjectsStats;
+
+    private int lives;
+    public int Lives
+    {
+        get => lives;
+        set
+        {
+            lives = value;
+        }
+    }
 
     private int attemptsSucceeded;
     public int AttemptsSucceeded
@@ -32,11 +43,19 @@ public class GameplayStatisticsSO : ScriptableObject
         set
         {
             attemptsFailed = value;
+
+            Lives--;
+
+            if (Lives <= 0)
+            {
+                Debug.Log("Gameover");
+            }
         }
     }
 
     private void OnEnable()
     {
+        Lives = defaultLives;
         AttemptsSucceeded = 0;
         AttemptsFailed = 0;
     }

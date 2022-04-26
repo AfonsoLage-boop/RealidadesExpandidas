@@ -14,6 +14,7 @@ public class TextStatistics : MonoBehaviour
     [SerializeField] private TextMeshProUGUI good;
     [SerializeField] private TextMeshProUGUI bad;
     [SerializeField] private TextMeshProUGUI speed;
+    [SerializeField] private TextMeshProUGUI lives;
 
     private void OnEnable() => UpdateText();
 
@@ -22,5 +23,6 @@ public class TextStatistics : MonoBehaviour
         good.text = "Good: " + statistics.AttemptsSucceeded;
         bad.text = "Bad: " + statistics.AttemptsFailed;
         speed.text = "Speed: " + stats.WallSpeed;
+        lives.text = "Lives: " + statistics.Lives;
     }
 }

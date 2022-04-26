@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49cbbda5eb7888439da3ae4ff564255, type: 3}
   m_Name: Gameplay Statistics
   m_EditorClassIdentifier: 
+  defaultLives: 5
   spawnableObjectsStats: {fileID: 11400000, guid: bf73b9b1ba2e5d947bbb5d8b03924b2d, type: 2}

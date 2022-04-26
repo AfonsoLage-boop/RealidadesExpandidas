@@ -16,6 +16,12 @@ public class GameplayStatisticsSO : ScriptableObject
         set
         {
             lives = value;
+
+            // Gameover logic
+            if (Lives <= 0)
+            {
+                Debug.Log("Gameover");
+            }
         }
     }
 
@@ -44,11 +50,9 @@ public class GameplayStatisticsSO : ScriptableObject
         {
             attemptsFailed = value;
 
-            Lives--;
-
-            if (Lives <= 0)
+            if (value != 0)
             {
-                Debug.Log("Gameover");
+                Lives--;
             }
         }
     }

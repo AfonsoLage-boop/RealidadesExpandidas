@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3df78f5769db5c4ab811da940195c3d, type: 3}
   m_Name: Spawnable Object Stats
   m_EditorClassIdentifier: 
-  defaultSpawnDelay: 2.5
-  defaultWallSpeed: 4
-  defaultPowerUpSpeed: 4
-  triesRequiredToIncrement: 4
-  speedIncrementMultiplier: 1.1
+  defaultSpawnDelay: 6
+  defaultWallSpeed: 1.5
+  defaultPowerUpSpeed: 1.5
+  triesRequiredToIncrement: 3
+  speedIncrementMultiplier: 1.2
   maximumSpeedOfObjects: 10

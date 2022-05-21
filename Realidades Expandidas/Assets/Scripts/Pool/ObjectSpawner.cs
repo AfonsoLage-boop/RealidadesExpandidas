@@ -1,34 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ExtensionMethods;
 
 public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] private SpawnableObjectStatsSO spawnableObjectsStats;
+    [SerializeField] private ObjectPoolCreator marionettePool;
+    [SerializeField] private ObjectPoolCreator powerUpPool;
+    [Range(0f,100f)] [SerializeField] private float powerUpChance;
     private YieldInstruction wfs;
-    private ObjectPoolCreator objectPool;
 
     // Minimum distance
     [SerializeField] private GameObject minimumDistanceGameObject;
     private float minimumDistance;
 
     // Positions
-    private IList<Transform> positions;
+    private IList<Transform> powerUpPositions;
+    private IList<Transform> marionettePositions;
 
     private void Awake()
     {
         wfs = new WaitForSeconds(spawnableObjectsStats.DefaultSpawnDelay);
-        objectPool = FindObjectOfType<ObjectPoolCreator>();
-        positions = new List<Transform>();
+        marionettePositions = new List<Transform>();
+        powerUpPositions = new List<Transform>();
         minimumDistance = 
             Vector3.Distance(transform.position, minimumDistanceGameObject.transform.position);
     }
 
     private void Start()
     {
-        foreach (Transform childTransform in transform)
+        foreach (Transform childTransform in transform.GetChild(0))
         {
-            positions.Add(childTransform);
+            marionettePositions.Add(childTransform);
+        }
+        foreach (Transform childTransform in transform.GetChild(1))
+        {
+            powerUpPositions.Add(childTransform);
         }
 
         StartCoroutine(SpawnObjectCoroutine());
@@ -38,15 +46,28 @@ public class ObjectSpawner : MonoBehaviour
     {
         Transform randomTransform;
         int randomIndex;
-        System.Random rand = new System.Random(5);
+        System.Random rand = new System.Random();
         
         do
         {
-            randomTransform = positions[rand.Next(0, positions.Count)];
-            randomIndex = rand.Next(0, (int)objectPool.Pool.PoolCount);
+            GameObject spawnedObj;
 
-            GameObject spawnedObj = objectPool.Pool.InstantiateFromPool(
-                randomIndex, randomTransform.position, randomTransform.rotation);
+            if (rand.Next(0, 100) < powerUpChance)
+            {
+                randomTransform = powerUpPositions[rand.Next(0, powerUpPositions.Count)];
+                randomIndex = rand.Next(0, (int)powerUpPool.Pool.PoolCount);
+
+                spawnedObj = powerUpPool.Pool.InstantiateFromPool(
+                    randomIndex, randomTransform.position, randomTransform.rotation);
+            }
+            else
+            {
+                randomTransform = marionettePositions[rand.Next(0, marionettePositions.Count)];
+                randomIndex = rand.Next(0, (int)marionettePool.Pool.PoolCount);
+
+                spawnedObj = marionettePool.Pool.InstantiateFromPool(
+                    randomIndex, randomTransform.position, randomTransform.rotation);
+            }
 
             yield return wfs;
 

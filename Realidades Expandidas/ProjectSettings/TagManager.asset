@@ -11,6 +11,7 @@ TagManager:
   - PalmLeft
   - PalmRight
   - MatchTrigger
+  - MarionetteMatchGameObject
   layers:
   - Default
   - TransparentFX

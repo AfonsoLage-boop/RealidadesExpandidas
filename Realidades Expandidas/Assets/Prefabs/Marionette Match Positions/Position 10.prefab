@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3980530426396073809}
   - component: {fileID: 2439981017303927701}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Elbows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2057935587043459281}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1015141061115185838}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1514626810170911355}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7774917679844808408}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7610960336534004744}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5987907061722898439}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Right Hang Foot - Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7034078847485327575}
   - component: {fileID: 3875243283433174296}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7577873976038543921}
   - component: {fileID: 2408474828074962055}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: UpperLegs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5729929401021036432}
   - component: {fileID: 3943607934219092341}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Forearms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6409916402948744681}
   - component: {fileID: 7536797377184952988}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7393602940983392153}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: WoodenPuppet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,7 +704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6436227405234043434}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_LeftUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   m_Component:
   - component: {fileID: 577094715370347462}
   - component: {fileID: 1739946007205031122}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4323411103435739062}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_RightToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,7 +857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 775962597914578183}
   - component: {fileID: 1024772800108745979}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Position 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3214859012226718808}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Left Hang Foot - Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -931,7 +931,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5792570147183378442}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -962,7 +962,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3833804098480925980}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -994,7 +994,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6031957375679089732}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1026,7 +1026,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4972941082129583994}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_RightUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2983861190302802662}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1088,7 +1088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4335589292730840955}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7051129433201733975}
   - component: {fileID: 7913435185699237510}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3315344536021348761}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8150106247818481699}
   - component: {fileID: 6793976183189052280}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wrists
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1332,7 +1332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4176320721663842989}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Right Hang Hand - Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1362,7 +1362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7551820559466044675}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1394,7 +1394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5762621703021215819}
   - component: {fileID: 6059396427504294265}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1485,7 +1485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1540371776859656225}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1516,7 +1516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1557543742795786226}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1547,7 +1547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4235610945930591129}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Left Hang Hand - Forearm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5563604940202073145}
   - component: {fileID: 4310044743307993200}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1667,7 +1667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1353590362908603260}
   - component: {fileID: 4806444528458503340}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Ankles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1758,7 +1758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5936492082286180538}
   - component: {fileID: 3456309118530308779}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HipJoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1847,7 +1847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8509998711252346016}
   - component: {fileID: 372897343554571107}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Shoulders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1935,7 +1935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6305323554850565989}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1968,9 +1968,9 @@ GameObject:
   - component: {fileID: -5473438969823772229}
   - component: {fileID: -6555806491964673343}
   - component: {fileID: 6639856154977490544}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Position 10
-  m_TagString: Untagged
+  m_TagString: MarionetteMatchGameObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2045,7 +2045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4506303234615066467}
   - component: {fileID: 5769934985347853861}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2138,7 +2138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7617879978090870048}
   - component: {fileID: 6634283473362880024}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2226,7 +2226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5164909884620437605}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2258,7 +2258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4353532258885110163}
   - component: {fileID: 5610294291491052061}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TorsoJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2348,7 +2348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5238407558098006084}
   - component: {fileID: 2689398822144559918}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Knees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2439,7 +2439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6852165325992646171}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2470,7 +2470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4688231606192929782}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2503,7 +2503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2034443119946166037}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_LeftToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2534,7 +2534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 262319756249132036}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: QuickRigCharacter_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2566,6 +2566,10 @@ PrefabInstance:
     - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_Name
       value: Match Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5227762835308054076, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_RootOrder
@@ -2629,6 +2633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Match Trigger
       objectReference: {fileID: 0}
+    - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5227762835308054076, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2691,6 +2699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Match Trigger
       objectReference: {fileID: 0}
+    - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5227762835308054076, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2752,6 +2764,10 @@ PrefabInstance:
     - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_Name
       value: Match Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5227762835308054076, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_RootOrder

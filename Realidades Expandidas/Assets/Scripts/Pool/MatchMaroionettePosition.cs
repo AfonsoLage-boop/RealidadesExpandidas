@@ -19,6 +19,11 @@ public class MatchMaroionettePosition : SpawnableObject
             // All positions hit
             if (positionsMatch == 4)
             {
+                Debug.Log("Perfect");
+                statistics.AttemptsSucceeded++;
+            }
+            else if (positionsMatch == 3)
+            {
                 Debug.Log("Good");
                 statistics.AttemptsSucceeded++;
             }

@@ -19,12 +19,18 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private GameObject minimumDistanceGameObject;
     private float minimumDistance;
 
+    private float timePassedMarionetteTry;
+
     // Positions
     private IList<Transform> powerUpPositions;
     private IList<Transform> marionettePositions;
 
+    public bool IsPaused { get; private set; }
+    public bool InMenu { get; private set; }
+
     private void Awake()
     {
+        IsPaused = true;
         wfs = new WaitForSeconds(spawnableObjectsStats.DefaultSpawnDelay);
         marionettePositions = new List<Transform>();
         powerUpPositions = new List<Transform>();
@@ -34,6 +40,8 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Start()
     {
+        timePassedMarionetteTry = -3;
+
         foreach (Transform childTransform in transform.GetChild(0))
         {
             marionettePositions.Add(childTransform);
@@ -46,6 +54,35 @@ public class ObjectSpawner : MonoBehaviour
         StartCoroutine(SpawnObjectCoroutine());
     }
 
+    public void PauseSpawn(bool value) => IsPaused = value;
+    public void InsideMenuUI(bool value) => InMenu = value;
+
+    public void SpawnOneMarionette()
+    {
+        if (Time.time < timePassedMarionetteTry + 3) return;
+
+        Transform randomTransform;
+        int randomIndex;
+        System.Random rand = new System.Random();
+
+        randomTransform = marionettePositions[rand.Next(0, marionettePositions.Count)];
+        randomIndex = rand.Next(0, (int)marionettePool.Pool.PoolCount);
+
+        marionettePool.Pool.InstantiateFromPool(
+            randomIndex, randomTransform.position, randomTransform.rotation);
+
+        timePassedMarionetteTry = Time.time;
+    }
+
+    public void StartGame()
+    {
+        foreach(GameObject marionette in 
+            GameObject.FindGameObjectsWithTag("MarionetteMatchGameObject"))
+        {
+            marionette.SetActive(false);
+        }
+    }
+
     private IEnumerator SpawnObjectCoroutine()
     {
         Transform randomTransform;
@@ -54,6 +91,12 @@ public class ObjectSpawner : MonoBehaviour
         
         do
         {
+            while (IsPaused)
+                yield return null;
+
+            while (InMenu)
+                yield return null;
+
             GameObject spawnedObj;
 
             if (forceFirstMarionetteSpawn)
@@ -84,6 +127,9 @@ public class ObjectSpawner : MonoBehaviour
                 }
             }
 
+            while (InMenu)
+                yield return null;
+
             yield return wfs;
 
             // Safe distance to spawn next object
@@ -93,6 +139,9 @@ public class ObjectSpawner : MonoBehaviour
                     spawnedObj.transform.position) < minimumDistance)
                 {
                     if (spawnedObj.activeSelf == false) break;
+
+                    while (InMenu)
+                        yield return null;
 
                     yield return null;
                 }

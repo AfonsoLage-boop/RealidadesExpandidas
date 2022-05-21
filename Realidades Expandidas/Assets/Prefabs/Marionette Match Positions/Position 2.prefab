@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: -612863980467329674}
   m_Layer: 0
   m_Name: Position 2
-  m_TagString: Untagged
+  m_TagString: MarionetteMatchGameObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

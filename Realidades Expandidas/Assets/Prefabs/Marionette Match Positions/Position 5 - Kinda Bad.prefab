@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 1809898799122480952}
   m_Layer: 0
   m_Name: Position 5 - Kinda Bad
-  m_TagString: Untagged
+  m_TagString: MarionetteMatchGameObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

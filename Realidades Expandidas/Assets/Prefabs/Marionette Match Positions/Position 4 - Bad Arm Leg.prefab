@@ -1331,7 +1331,7 @@ GameObject:
   - component: {fileID: 4763609777383780037}
   m_Layer: 0
   m_Name: Position 4 - Bad Arm Leg
-  m_TagString: Untagged
+  m_TagString: MarionetteMatchGameObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

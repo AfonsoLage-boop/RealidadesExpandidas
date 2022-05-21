@@ -23,10 +23,15 @@ public abstract class SpawnableObject : MonoBehaviour
     // Statistics
     private TextStatistics textStatistics;
 
+    private float speed;
+
+    private ObjectSpawner spawner;
+
     protected virtual void Awake()
     {
         marionetteParent = FindObjectOfType<MarionetteParent>();
         textStatistics = FindObjectOfType<TextStatistics>();
+        spawner = FindObjectOfType<ObjectSpawner>();
     }
 
     protected virtual void OnEnable()
@@ -43,8 +48,15 @@ public abstract class SpawnableObject : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        float speed = spawnType == 
-            SpawnType.MatchPosition ? stats.WallSpeed : stats.PowerUpSpeed;
+        if (spawner.InMenu || spawner.IsPaused)
+        {
+            speed = 0;
+        }
+        else
+        {
+            speed = spawnType ==
+                SpawnType.MatchPosition ? stats.WallSpeed : stats.PowerUpSpeed;
+        }
         
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
     }

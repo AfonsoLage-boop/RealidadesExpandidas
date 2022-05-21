@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Scriptable object with gameplay statistics.
@@ -20,7 +21,7 @@ public class GameplayStatisticsSO : ScriptableObject
             // Gameover logic
             if (Lives <= 0)
             {
-                Debug.Log("Gameover");
+                OnGameOver();
             }
         }
     }
@@ -63,4 +64,7 @@ public class GameplayStatisticsSO : ScriptableObject
         AttemptsSucceeded = 0;
         AttemptsFailed = 0;
     }
+
+    protected virtual void OnGameOver() => GameOver?.Invoke();
+    public event Action GameOver;
 }

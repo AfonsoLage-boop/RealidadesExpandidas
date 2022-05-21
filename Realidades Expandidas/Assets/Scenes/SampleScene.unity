@@ -3120,7 +3120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5215bc6635221f34b8eb892db07db6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlWithKeyboard: 0
+  controlWithKeyboard: 1
   translationForce: 1.5
 --- !u!1 &617910567 stripped
 GameObject:

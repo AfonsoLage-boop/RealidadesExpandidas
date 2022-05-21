@@ -42,13 +42,14 @@ public abstract class SpawnableObject : MonoBehaviour
 
     protected virtual void Update()
     {
-        timeSinceSpawned += Time.deltaTime;
+        if (spawner.IsPaused == false)
+            timeSinceSpawned += Time.deltaTime;
         if (timeSinceSpawned > TIMETODISABLE) gameObject.SetActive(false);
     }
 
     protected virtual void FixedUpdate()
     {
-        if (spawner.InMenu || spawner.IsPaused)
+        if (spawner.IsPaused && spawner.InInitialMenu == false)
         {
             speed = 0;
         }

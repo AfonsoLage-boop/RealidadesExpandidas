@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ExtensionMethods;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -9,7 +8,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private ObjectPoolCreator marionettePool;
     [SerializeField] private ObjectPoolCreator powerUpPool;
     [Range(0f,100f)] [SerializeField] private float powerUpChance;
-    private YieldInstruction wfs;
+    [SerializeField] private Animator[] doorAnims;
+    [SerializeField] private Animator pauseToGameplayAnim;
 
     [Header("Force spawn for tests")]
     [Tooltip("Marionette on pool position index 0 will always spawn.")]
@@ -25,13 +25,13 @@ public class ObjectSpawner : MonoBehaviour
     private IList<Transform> powerUpPositions;
     private IList<Transform> marionettePositions;
 
+    public bool InInitialMenu { get; private set; }
     public bool IsPaused { get; private set; }
-    public bool InMenu { get; private set; }
 
     private void Awake()
     {
+        InInitialMenu = true;
         IsPaused = true;
-        wfs = new WaitForSeconds(spawnableObjectsStats.DefaultSpawnDelay);
         marionettePositions = new List<Transform>();
         powerUpPositions = new List<Transform>();
         minimumDistance = 
@@ -55,7 +55,7 @@ public class ObjectSpawner : MonoBehaviour
     }
 
     public void PauseSpawn(bool value) => IsPaused = value;
-    public void InsideMenuUI(bool value) => InMenu = value;
+    public void InitialMenu(bool value) => InInitialMenu = value;
 
     public void SpawnOneMarionette()
     {
@@ -72,6 +72,9 @@ public class ObjectSpawner : MonoBehaviour
             randomIndex, randomTransform.position, randomTransform.rotation);
 
         timePassedMarionetteTry = Time.time;
+
+        foreach (Animator anim in doorAnims)
+            anim.SetTrigger("Open");
     }
 
     public void StartGame()
@@ -81,6 +84,11 @@ public class ObjectSpawner : MonoBehaviour
         {
             marionette.SetActive(false);
         }
+
+        foreach (Animator anim in doorAnims)
+            anim.SetTrigger("Open");
+
+        pauseToGameplayAnim.SetTrigger("Count");
     }
 
     private IEnumerator SpawnObjectCoroutine()
@@ -88,13 +96,14 @@ public class ObjectSpawner : MonoBehaviour
         Transform randomTransform;
         int randomIndex;
         System.Random rand = new System.Random();
-        
+        float currentTimeToSpawn = 0;
+
         do
         {
-            while (IsPaused)
+            while (InInitialMenu)
                 yield return null;
 
-            while (InMenu)
+            while (IsPaused)
                 yield return null;
 
             GameObject spawnedObj;
@@ -127,10 +136,15 @@ public class ObjectSpawner : MonoBehaviour
                 }
             }
 
-            while (InMenu)
+            while (currentTimeToSpawn < spawnableObjectsStats.DefaultSpawnDelay)
+            {
+                if (IsPaused == false)
+                {
+                    currentTimeToSpawn += Time.deltaTime;
+                }
                 yield return null;
-
-            yield return wfs;
+            }
+            currentTimeToSpawn = 0;
 
             // Safe distance to spawn next object
             if (spawnedObj.activeSelf)
@@ -140,7 +154,7 @@ public class ObjectSpawner : MonoBehaviour
                 {
                     if (spawnedObj.activeSelf == false) break;
 
-                    while (InMenu)
+                    while (IsPaused)
                         yield return null;
 
                     yield return null;

@@ -6,12 +6,14 @@ public class PowerUpCoroutines : MonoBehaviour
     // Serialized Components
     [SerializeField] private PowerUpsSO powerUps;
     [SerializeField] private SpawnableObjectStatsSO stats;
+    private ObjectSpawner spawner;
 
     // Components
     private TextStatistics textStatistics;
 
     private void Awake()
     {
+        spawner = FindObjectOfType<ObjectSpawner>();
         textStatistics = FindObjectOfType<TextStatistics>();
     }
 
@@ -19,12 +21,12 @@ public class PowerUpCoroutines : MonoBehaviour
     {
         stats.WallSpeed = powerUps.SlowMotionAmount;
 
-        float enteredTime = Time.time;
-        float currentTime = Time.time;
+        float currentTime = 0;
 
-        while (currentTime < enteredTime + powerUps.SlowMotionDuration)
+        while (currentTime < powerUps.SlowMotionDuration)
         {
-            currentTime = Time.time;
+            if (spawner.IsPaused == false)
+                currentTime += Time.deltaTime;
             yield return null;
         }
         stats.WallSpeed = stats.DefaultWallSpeed;

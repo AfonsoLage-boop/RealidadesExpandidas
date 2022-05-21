@@ -66,8 +66,11 @@ public class GameplayStatisticsSO : ScriptableObject
     private void OnEnable()
     {
         spawner = FindObjectOfType<ObjectSpawner>();
-        Lives = defaultLives;
-        AttemptsSucceeded = 0;
-        AttemptsFailed = 0;
+        if (spawner!=null)
+        {
+            Lives = defaultLives;
+            AttemptsSucceeded = 0;
+            AttemptsFailed = 0;
+        }
     }
 }

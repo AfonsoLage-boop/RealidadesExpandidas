@@ -20,9 +20,9 @@ public class TextStatistics : MonoBehaviour
 
     public void UpdateText()
     {
-        good.text = "Good: " + statistics.AttemptsSucceeded;
+        good.text = statistics.AttemptsSucceeded.ToString();
         bad.text = "Bad: " + statistics.AttemptsFailed;
         speed.text = "Speed: " + stats.WallSpeed;
-        lives.text = "Lives: " + statistics.Lives;
+        lives.text = statistics.Lives.ToString();
     }
 }

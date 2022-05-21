@@ -26,21 +26,24 @@ public class MatchMaroionettePosition : SpawnableObject
             // All positions hit
             if (positionsMatch == 4)
             {
-                Debug.Log("Perfect");
                 scoreEvaluation.Perfect();
-                statistics.AttemptsSucceeded++;
+
+                if (spawner.InInitialMenu == false)
+                    statistics.AttemptsSucceeded++;
             }
             else if (positionsMatch == 3)
             {
-                Debug.Log("Good");
                 scoreEvaluation.Good();
-                statistics.AttemptsSucceeded++;
+
+                if (spawner.InInitialMenu == false)
+                    statistics.AttemptsSucceeded++;
             }
             else
             {
-                Debug.Log("Bad");
                 scoreEvaluation.Bad();
-                statistics.AttemptsFailed++;
+
+                if (spawner.InInitialMenu == false)
+                    statistics.AttemptsFailed++;
             }
         }
 

@@ -25,7 +25,7 @@ public abstract class SpawnableObject : MonoBehaviour
 
     private float speed;
 
-    private ObjectSpawner spawner;
+    protected ObjectSpawner spawner;
 
     protected virtual void Awake()
     {

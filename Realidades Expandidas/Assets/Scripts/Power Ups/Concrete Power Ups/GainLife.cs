@@ -5,7 +5,8 @@ public class GainLife : PowerUp
 {
     public override void ExecuteBoost()
     {
-        statistics.Lives++;
+        if (spawner.InInitialMenu == false)
+            statistics.Lives++;
         gameObject.SetActive(false);
     }
 }

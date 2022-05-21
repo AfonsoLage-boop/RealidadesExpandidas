@@ -9,8 +9,6 @@ public class GameplayStatisticsSO : ScriptableObject
     [Range(1, 10)] [SerializeField] private int defaultLives;
     [SerializeField] private SpawnableObjectStatsSO spawnableObjectsStats;
 
-    private ObjectSpawner spawner;
-
     private int lives;
     public int Lives
     {
@@ -33,8 +31,6 @@ public class GameplayStatisticsSO : ScriptableObject
         get => attemptsSucceeded;
         set
         {
-            if (spawner.IsPaused) return;
-
             attemptsSucceeded = value;
 
             // Speed multiplier logic
@@ -52,8 +48,6 @@ public class GameplayStatisticsSO : ScriptableObject
         get => attemptsFailed;
         set
         {
-            if (spawner.IsPaused) return;
-
             attemptsFailed = value;
 
             if (value != 0)
@@ -65,12 +59,8 @@ public class GameplayStatisticsSO : ScriptableObject
 
     private void OnEnable()
     {
-        spawner = FindObjectOfType<ObjectSpawner>();
-        if (spawner!=null)
-        {
-            Lives = defaultLives;
-            AttemptsSucceeded = 0;
-            AttemptsFailed = 0;
-        }
+        Lives = defaultLives;
+        AttemptsSucceeded = 0;
+        AttemptsFailed = 0;
     }
 }

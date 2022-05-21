@@ -4688,7 +4688,7 @@ Animator:
   m_GameObject: {fileID: 532899396}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b581ffb95c55e374a8fd669ba4078148, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7cad6fb1268c2f34f841e78fd1d7b37b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8175,8 +8175,8 @@ MonoBehaviour:
   m_fontColorGradient:
     topLeft: {r: 1, g: 0.82745105, b: 0, a: 1}
     topRight: {r: 1, g: 0.80638003, b: 0.21226418, a: 1}
-    bottomLeft: {r: 0.9245283, g: 0, b: 0, a: 1}
-    bottomRight: {r: 1, g: 0.32120335, b: 0, a: 1}
+    bottomLeft: {r: 1, g: 0.82745105, b: 0, a: 1}
+    bottomRight: {r: 1, g: 0.80638003, b: 0.21226418, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -13758,7 +13758,7 @@ Animator:
   m_GameObject: {fileID: 1687087887}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b581ffb95c55e374a8fd669ba4078148, type: 2}
+  m_Controller: {fileID: 9100000, guid: 07fcf1b4de7ac1b459eee3f08601efdf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13803,8 +13803,8 @@ MonoBehaviour:
   m_fontColorGradient:
     topLeft: {r: 0.3254902, g: 0.8196079, b: 0.25882354, a: 1}
     topRight: {r: 0.92278755, g: 0.990566, b: 0.3504361, a: 1}
-    bottomLeft: {r: 0.9245283, g: 0, b: 0, a: 1}
-    bottomRight: {r: 1, g: 0.32120335, b: 0, a: 1}
+    bottomLeft: {r: 0.3254902, g: 0.8196079, b: 0.25882354, a: 1}
+    bottomRight: {r: 0.92278755, g: 0.990566, b: 0.3504361, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0

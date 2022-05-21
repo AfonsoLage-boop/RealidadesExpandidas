@@ -25,6 +25,19 @@ public class MarionetteControl : MonoBehaviour
     [SerializeField] private RectTransform rectTrans;
     [SerializeField] private Vector2 rectDistance;
 
+    private float horizontalDistance;
+    private float verticalDistance;
+    public void HorizontalDistance(float x)
+    {
+        PlayerPrefs.SetFloat(limb.ToString() + HV.Horizontal.ToString(), x);
+        horizontalDistance = x;
+    }
+    public void VerticalDistance(float x)
+    {
+        PlayerPrefs.SetFloat(limb.ToString() + HV.Vertical.ToString(), x);
+        verticalDistance = x;
+    }
+
     [SerializeField] private Transform legsStretchTransform;
     [Range(0.1f, 2f)] [SerializeField] private float legsStretchLimit = 0.92f;
 
@@ -57,27 +70,27 @@ public class MarionetteControl : MonoBehaviour
             case Limb.LeftLeg:
                 rectanglePosition =
                     leftPalm.gameObject.transform.position +
-                    Vector3.right * rectDistance.x +
-                    Vector3.up * rectDistance.y;
+                    Vector3.right * horizontalDistance +
+                    Vector3.up * verticalDistance;
 
                 break;
             case Limb.LeftArm:
                 rectanglePosition =
                     leftPalm.gameObject.transform.position +
-                    Vector3.right * rectDistance.x +
-                    Vector3.up * rectDistance.y;
+                    Vector3.right * horizontalDistance +
+                    Vector3.up * verticalDistance;
                 break;
             case Limb.RightLeg:
                 rectanglePosition =
                     rightPalm.gameObject.transform.position +
-                    Vector3.right * rectDistance.x +
-                    Vector3.up * rectDistance.y;
+                    Vector3.right * horizontalDistance +
+                    Vector3.up * verticalDistance;
                 break;
             case Limb.RightArm:
                 rectanglePosition =
                     rightPalm.gameObject.transform.position +
-                    Vector3.right * rectDistance.x +
-                    Vector3.up * rectDistance.y;
+                    Vector3.right * horizontalDistance +
+                    Vector3.up * verticalDistance;
                 break;
             default:
                 rectanglePosition = Vector3.zero;

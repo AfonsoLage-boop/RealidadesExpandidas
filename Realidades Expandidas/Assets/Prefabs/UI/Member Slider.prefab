@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 49.8, y: 44.2}
+  m_AnchoredPosition: {x: 45.27, y: 44.2}
   m_SizeDelta: {x: 200, y: 33.106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3139230535410891429
@@ -219,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7928346716686850225}
   - component: {fileID: 7928346716686850224}
+  - component: {fileID: 5150486168381369647}
   m_Layer: 0
   m_Name: Member Slider
   m_TagString: Untagged
@@ -300,6 +301,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5150486168381369647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928346716686850226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc11f4f5758256a4d8e005b0f45803a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 7928346716686850224}
+  limb: 0
 --- !u!1 &7928346716699171070
 GameObject:
   m_ObjectHideFlags: 0

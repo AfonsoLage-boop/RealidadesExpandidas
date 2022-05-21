@@ -11,6 +11,10 @@ public class ObjectSpawner : MonoBehaviour
     [Range(0f,100f)] [SerializeField] private float powerUpChance;
     private YieldInstruction wfs;
 
+    [Header("Force spawn for tests")]
+    [Tooltip("Marionette on pool position index 0 will always spawn.")]
+    [SerializeField] private bool forceFirstMarionetteSpawn;
+
     // Minimum distance
     [SerializeField] private GameObject minimumDistanceGameObject;
     private float minimumDistance;
@@ -52,21 +56,32 @@ public class ObjectSpawner : MonoBehaviour
         {
             GameObject spawnedObj;
 
-            if (rand.Next(0, 100) < powerUpChance)
+            if (forceFirstMarionetteSpawn)
             {
-                randomTransform = powerUpPositions[rand.Next(0, powerUpPositions.Count)];
-                randomIndex = rand.Next(0, (int)powerUpPool.Pool.PoolCount);
+                randomTransform = marionettePositions[0];
+                randomIndex = 0;
 
-                spawnedObj = powerUpPool.Pool.InstantiateFromPool(
+                spawnedObj = marionettePool.Pool.InstantiateFromPool(
                     randomIndex, randomTransform.position, randomTransform.rotation);
             }
             else
             {
-                randomTransform = marionettePositions[rand.Next(0, marionettePositions.Count)];
-                randomIndex = rand.Next(0, (int)marionettePool.Pool.PoolCount);
+                if (rand.Next(0, 100) < powerUpChance)
+                {
+                    randomTransform = powerUpPositions[rand.Next(0, powerUpPositions.Count)];
+                    randomIndex = rand.Next(0, (int)powerUpPool.Pool.PoolCount);
 
-                spawnedObj = marionettePool.Pool.InstantiateFromPool(
-                    randomIndex, randomTransform.position, randomTransform.rotation);
+                    spawnedObj = powerUpPool.Pool.InstantiateFromPool(
+                        randomIndex, randomTransform.position, randomTransform.rotation);
+                }
+                else
+                {
+                    randomTransform = marionettePositions[rand.Next(0, marionettePositions.Count)];
+                    randomIndex = rand.Next(0, (int)marionettePool.Pool.PoolCount);
+
+                    spawnedObj = marionettePool.Pool.InstantiateFromPool(
+                        randomIndex, randomTransform.position, randomTransform.rotation);
+                }
             }
 
             yield return wfs;

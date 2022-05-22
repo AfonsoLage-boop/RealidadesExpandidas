@@ -5,13 +5,12 @@ public class GameOverCheck : MonoBehaviour
     [SerializeField] private GameplayStatisticsSO statistics;
     [SerializeField] private GameObject gameOverAnimationActivate;
 
-    private void OnEnable()
+    private void Update()
     {
-        statistics.GameOver += () => gameOverAnimationActivate.SetActive(true);      
-    }
-
-    private void OnDisable()
-    {
-        statistics.GameOver -= () => gameOverAnimationActivate.SetActive(true);
+        if (statistics.Lives <= 0)
+        {
+            gameOverAnimationActivate.SetActive(true);
+            this.enabled = false;
+        }
     }
 }

@@ -58,7 +58,7 @@ public class GameplayStatisticsSO : ScriptableObject
         }
     }
 
-    private void OnEnable()
+    public void ResetStatistics()
     {
         Lives = defaultLives;
         AttemptsSucceeded = 0;

@@ -5,11 +5,11 @@ using UnityEngine;
 /// </summary>
 public class MatchPosition : MonoBehaviour
 {
-    private MatchMaroionettePosition marionettePosition;
+    private MatchMarionettePosition marionettePosition;
     private bool contactCount;
 
     private void Awake() =>
-        marionettePosition = GetComponentInParent<MatchMaroionettePosition>();
+        marionettePosition = GetComponentInParent<MatchMarionettePosition>();
 
     private void OnEnable()
     {

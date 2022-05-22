@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Class used by every wall.
 /// </summary>
-public class MatchMaroionettePosition : SpawnableObject
+public class MatchMarionettePosition : SpawnableObject
 {
     private UITextScoreEvaluation scoreEvaluation;
     private int positionsMatch;
@@ -29,14 +29,20 @@ public class MatchMaroionettePosition : SpawnableObject
                 scoreEvaluation.Perfect();
 
                 if (spawner.InInitialMenu == false)
+                {
                     statistics.AttemptsSucceeded++;
+                    statistics.AddPerfectScore();
+                }
             }
             else if (positionsMatch == 3)
             {
                 scoreEvaluation.Good();
 
                 if (spawner.InInitialMenu == false)
+                {
                     statistics.AttemptsSucceeded++;
+                    statistics.AddGoodScore();
+                }
             }
             else
             {

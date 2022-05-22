@@ -7,8 +7,14 @@ using System;
 [CreateAssetMenu(fileName = "Gameplay Statistics", menuName = "Gameplay Statistics")]
 public class GameplayStatisticsSO : ScriptableObject
 {
+    [Range(100, 1000)][SerializeField] private uint goodScore;
+    [Range(100, 1000)][SerializeField] private uint perfectScore;
     [Range(1, 10)] [SerializeField] private int defaultLives;
     [SerializeField] private SpawnableObjectStatsSO spawnableObjectsStats;
+
+    public uint Score { get; private set; }
+    public void AddGoodScore() => Score += goodScore;
+    public void AddPerfectScore() => Score += perfectScore;
 
     private int lives;
     public int Lives
@@ -17,12 +23,6 @@ public class GameplayStatisticsSO : ScriptableObject
         set
         {
             lives = value;
-
-            // Gameover logic
-            if (Lives <= 0)
-            {
-                OnGameOver();
-            }
         }
     }
 
@@ -61,10 +61,8 @@ public class GameplayStatisticsSO : ScriptableObject
     public void ResetStatistics()
     {
         Lives = defaultLives;
+        Score = 0;
         AttemptsSucceeded = 0;
         AttemptsFailed = 0;
     }
-
-    protected virtual void OnGameOver() => GameOver?.Invoke();
-    public event Action GameOver;
 }

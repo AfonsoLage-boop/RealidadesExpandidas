@@ -1917,7 +1917,7 @@ GameObject:
   - component: {fileID: 194340524}
   - component: {fileID: 194340525}
   m_Layer: 0
-  m_Name: Spot Light (3)
+  m_Name: Left Holo Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3403,7 +3403,7 @@ GameObject:
   - component: {fileID: 316334996}
   - component: {fileID: 316334997}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Left Holo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3421,7 +3421,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560548678}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &316334997
 Light:
@@ -5108,6 +5108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 560548678}
+  - component: {fileID: 560548679}
   m_Layer: 0
   m_Name: Lights
   m_TagString: Untagged
@@ -5126,15 +5127,34 @@ Transform:
   m_LocalPosition: {x: -0.2376386, y: 2.479195, z: 0.3727336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 316334996}
   - {fileID: 1584255142}
+  - {fileID: 1015895624}
   - {fileID: 1608630592}
   - {fileID: 1992747569}
-  - {fileID: 1015895624}
+  - {fileID: 316334996}
   - {fileID: 194340524}
   m_Father: {fileID: 1313041271}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &560548679
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560548677}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46a08b65891884a4989268bab6a505cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &561417354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8749,7 +8769,7 @@ GameObject:
   - component: {fileID: 1015895624}
   - component: {fileID: 1015895625}
   m_Layer: 0
-  m_Name: Spot Light (2)
+  m_Name: Right Holo Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8767,7 +8787,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560548678}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 115.16, y: 57.5, z: 60.031}
 --- !u!108 &1015895625
 Light:
@@ -13329,7 +13349,7 @@ GameObject:
   - component: {fileID: 1584255142}
   - component: {fileID: 1584255143}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Right Holo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13347,7 +13367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560548678}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1584255143
 Light:

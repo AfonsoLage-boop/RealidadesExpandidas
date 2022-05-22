@@ -12,6 +12,9 @@ public class GameplayStatisticsSO : ScriptableObject
     [Range(1, 10)] [SerializeField] private int defaultLives;
     [SerializeField] private SpawnableObjectStatsSO spawnableObjectsStats;
 
+    public uint GoodScore => goodScore;
+    public uint PerfectScore => perfectScore;
+
     public uint Score { get; private set; }
     public void AddGoodScore() => Score += goodScore;
     public void AddPerfectScore() => Score += perfectScore;

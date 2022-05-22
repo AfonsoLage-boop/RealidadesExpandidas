@@ -109,6 +109,7 @@ public class MarionetteControl : MonoBehaviour
         #region Keyboard Control
         if (marionetteParent.ControlWithKeyboard)
         {
+            /*
             if (Input.GetKey(KeyCode.S))
             {
                 if (limb == Limb.Hips)
@@ -134,6 +135,7 @@ public class MarionetteControl : MonoBehaviour
                     }
                 }
             }
+            */
 
             if (Input.GetKey(KeyCode.A))
             {

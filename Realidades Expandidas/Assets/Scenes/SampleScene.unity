@@ -3429,6 +3429,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 03c93b565cc15174eab4aa46112decfb, type: 3}
   - {fileID: 8300000, guid: e3cece4e3ab934741b3e69039af8e9b4, type: 3}
+  - {fileID: 8300000, guid: 4026216663daeee49972c053f2666b0e, type: 3}
 --- !u!1 &280242223 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1293911481872045489, guid: 0798861f7d3e62a418a1a23cf781d696, type: 3}

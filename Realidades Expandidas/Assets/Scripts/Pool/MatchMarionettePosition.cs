@@ -8,13 +8,12 @@ public class MatchMarionettePosition : SpawnableObject
     private UITextScoreEvaluation scoreEvaluation;
     private int positionsMatch;
     private bool collidedWithCheckWall;
-    private Animator anim;
+    [SerializeField] private Animator anim;
 
     protected override void Awake()
     {
         base.Awake();
         scoreEvaluation = FindObjectOfType<UITextScoreEvaluation>();
-        anim = GetComponent<Animator>();
     }
 
     protected override void OnEnable()

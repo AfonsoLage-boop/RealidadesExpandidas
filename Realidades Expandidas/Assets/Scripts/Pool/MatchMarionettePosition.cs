@@ -43,8 +43,8 @@ public class MatchMarionettePosition : SpawnableObject
                 {
                     statistics.AttemptsSucceeded++;
                     statistics.AddPerfectScore();
-                    anim.SetTrigger("Good");
                 }
+                anim.SetTrigger("Good");
             }
             else if (positionsMatch == 3)
             {
@@ -54,8 +54,8 @@ public class MatchMarionettePosition : SpawnableObject
                 {
                     statistics.AttemptsSucceeded++;
                     statistics.AddGoodScore();
-                    anim.SetTrigger("Good");
                 }
+                anim.SetTrigger("Good");
             }
             else
             {

@@ -12,7 +12,8 @@ public class SpeedIncrementVFXAndSound : MonoBehaviour
 
     public void ExecuteVFXAndSound()
     {
-        Instantiate(vfx, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(vfx, transform.position, Quaternion.identity);
+        obj.transform.parent = transform;
         audioS.Play();
     }
 }

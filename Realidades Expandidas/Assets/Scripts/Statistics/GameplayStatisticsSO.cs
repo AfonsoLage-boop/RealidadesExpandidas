@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 /// <summary>
 /// Scriptable object with gameplay statistics.
@@ -11,6 +10,7 @@ public class GameplayStatisticsSO : ScriptableObject
     [Range(100, 1000)][SerializeField] private uint perfectScore;
     [Range(1, 10)] [SerializeField] private int defaultLives;
     [SerializeField] private SpawnableObjectStatsSO spawnableObjectsStats;
+    private SpeedIncrementVFXAndSound speedIncrement;
 
     public uint GoodScore => goodScore;
     public uint PerfectScore => perfectScore;
@@ -42,6 +42,7 @@ public class GameplayStatisticsSO : ScriptableObject
                 attemptsSucceeded % spawnableObjectsStats.TriesRequiredToIncrement == 0)
             {
                 spawnableObjectsStats.IncrementSpeed();
+                speedIncrement.ExecuteVFXAndSound();
             }
         }
     }
@@ -67,5 +68,6 @@ public class GameplayStatisticsSO : ScriptableObject
         Score = 0;
         AttemptsSucceeded = 0;
         AttemptsFailed = 0;
+        speedIncrement = FindObjectOfType<SpeedIncrementVFXAndSound>();
     }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goodScore: 250
   perfectScore: 500
-  defaultLives: 5
+  defaultLives: 1
   spawnableObjectsStats: {fileID: 11400000, guid: bf73b9b1ba2e5d947bbb5d8b03924b2d, type: 2}

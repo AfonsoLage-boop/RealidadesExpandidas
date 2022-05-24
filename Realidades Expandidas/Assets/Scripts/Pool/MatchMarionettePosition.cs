@@ -8,7 +8,7 @@ public class MatchMarionettePosition : SpawnableObject
     private UITextScoreEvaluation scoreEvaluation;
     private int positionsMatch;
     private bool collidedWithCheckWall;
-    [SerializeField] private Animator anim;
+    //[SerializeField] private Animator anim;
 
     protected override void Awake()
     {
@@ -22,8 +22,8 @@ public class MatchMarionettePosition : SpawnableObject
         positionsMatch = 0;
         collidedWithCheckWall = false;
 
-        anim.ResetTrigger("Good");
-        anim.ResetTrigger("Bad");
+        //anim.ResetTrigger("Good");
+        //anim.ResetTrigger("Bad");
     }
 
     protected override void OnMarionetteCollision(Collider collider)
@@ -44,7 +44,7 @@ public class MatchMarionettePosition : SpawnableObject
                     statistics.AttemptsSucceeded++;
                     statistics.AddPerfectScore();
                 }
-                anim.SetTrigger("Good");
+                //anim.SetTrigger("Good");
             }
             else if (positionsMatch == 3)
             {
@@ -55,7 +55,7 @@ public class MatchMarionettePosition : SpawnableObject
                     statistics.AttemptsSucceeded++;
                     statistics.AddGoodScore();
                 }
-                anim.SetTrigger("Good");
+                //anim.SetTrigger("Good");
             }
             else
             {
@@ -63,7 +63,7 @@ public class MatchMarionettePosition : SpawnableObject
 
                 if (spawner.InInitialMenu == false)
                     statistics.AttemptsFailed++;
-                anim.SetTrigger("Bad");
+                //anim.SetTrigger("Bad");
             }
         }
 

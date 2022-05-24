@@ -16,6 +16,7 @@ public class TextStatistics : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bad;
     [SerializeField] private TextMeshProUGUI speed;
     [SerializeField] private TextMeshProUGUI lives;
+    [SerializeField] private TextMeshProUGUI gameOverText;
 
     private uint score;
     private YieldInstruction wffu;
@@ -48,5 +49,6 @@ public class TextStatistics : MonoBehaviour
             good.text = score.ToString();
             yield return wffu;
         }
+        gameOverText.text = score.ToString();
     }
 }

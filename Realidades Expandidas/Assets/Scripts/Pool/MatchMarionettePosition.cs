@@ -8,6 +8,7 @@ public class MatchMarionettePosition : SpawnableObject
     private UITextScoreEvaluation scoreEvaluation;
     private int positionsMatch;
     private bool collidedWithCheckWall;
+    
     //[SerializeField] private Animator anim;
 
     protected override void Awake()
@@ -62,7 +63,10 @@ public class MatchMarionettePosition : SpawnableObject
                 scoreEvaluation.Bad();
 
                 if (spawner.InInitialMenu == false)
+                {
                     statistics.AttemptsFailed++;
+                }                
+
                 //anim.SetTrigger("Bad");
             }
         }

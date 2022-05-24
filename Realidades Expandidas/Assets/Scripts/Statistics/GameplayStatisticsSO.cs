@@ -10,7 +10,7 @@ public class GameplayStatisticsSO : ScriptableObject
     [Range(100, 1000)][SerializeField] private uint perfectScore;
     [Range(1, 10)] [SerializeField] private int defaultLives;
     [SerializeField] private SpawnableObjectStatsSO spawnableObjectsStats;
-    private SpeedIncrementVFXAndSound speedIncrement;
+    private CollisionsVFXAndSound speedIncrement;
 
     public uint GoodScore => goodScore;
     public uint PerfectScore => perfectScore;
@@ -54,10 +54,15 @@ public class GameplayStatisticsSO : ScriptableObject
         set
         {
             attemptsFailed = value;
-
+            
             if (value != 0)
             {
                 Lives--;
+
+                if (Lives > 0)
+                {
+                    speedIncrement.ExecuteBadAudioSound();
+                }
             }
         }
     }
@@ -68,6 +73,6 @@ public class GameplayStatisticsSO : ScriptableObject
         Score = 0;
         AttemptsSucceeded = 0;
         AttemptsFailed = 0;
-        speedIncrement = FindObjectOfType<SpeedIncrementVFXAndSound>();
+        speedIncrement = FindObjectOfType<CollisionsVFXAndSound>();
     }
 }

@@ -109,137 +109,119 @@ public class MarionetteControl : MonoBehaviour
         #region Keyboard Control
         if (marionetteParent.ControlWithKeyboard)
         {
-            /*
+            Vector3 translateLeft = Vector3.zero;
+            Vector3 translateUp = Vector3.zero;
+            Vector3 translateDown = Vector3.zero;
+            Vector3 translateRight = Vector3.zero;
+
+            // Moves all members at the same time
             if (Input.GetKey(KeyCode.S))
             {
-                if (limb == Limb.Hips)
-                {
-                    if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                    translateLeft = Vector3.left;
 
-                    if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
+                if (Input.GetKey(KeyCode.RightArrow))
+                    translateRight = Vector3.right;
 
-                    if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
+                if (Input.GetKey(KeyCode.UpArrow))
+                    translateUp = Vector3.up;
 
-                    if (Input.GetKey(KeyCode.DownArrow))
-                    {
-                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-                }
+                if (Input.GetKey(KeyCode.DownArrow))
+                    translateDown = Vector3.down;
             }
-            */
-
-            if (Input.GetKey(KeyCode.A))
+            else // Else it moves on at a time
             {
-                if (limb == Limb.LeftLeg)
+                if (Input.GetKey(KeyCode.A))
                 {
-                    if (Input.GetKey(KeyCode.LeftArrow))
+                    if (limb == Limb.LeftLeg)
                     {
-                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
+                        if (Input.GetKey(KeyCode.LeftArrow))
+                            translateLeft = Vector3.left;
 
-                    if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
+                        if (Input.GetKey(KeyCode.RightArrow))
+                            translateRight = Vector3.right;
 
-                    if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
+                        if (Input.GetKey(KeyCode.UpArrow))
+                            translateUp = Vector3.up;
 
-                    if (Input.GetKey(KeyCode.DownArrow))
+                        if (Input.GetKey(KeyCode.DownArrow))
+                            translateDown = Vector3.down;
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    if (limb == Limb.RightLeg)
                     {
-                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
+                        if (Input.GetKey(KeyCode.LeftArrow))
+                            translateLeft = Vector3.left;
+
+                        if (Input.GetKey(KeyCode.RightArrow))
+                            translateRight = Vector3.right;
+
+                        if (Input.GetKey(KeyCode.UpArrow))
+                            translateUp = Vector3.up;
+
+                        if (Input.GetKey(KeyCode.DownArrow))
+                            translateDown = Vector3.down;
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    if (limb == Limb.LeftArm)
+                    {
+                        if (Input.GetKey(KeyCode.LeftArrow))
+                            translateLeft = Vector3.left;
+
+                        if (Input.GetKey(KeyCode.RightArrow))
+                            translateRight = Vector3.right;
+
+                        if (Input.GetKey(KeyCode.UpArrow))
+                            translateUp = Vector3.up;
+
+                        if (Input.GetKey(KeyCode.DownArrow))
+                            translateDown = Vector3.down;
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.E))
+                {
+                    if (limb == Limb.RightArm)
+                    {
+                        if (Input.GetKey(KeyCode.LeftArrow))
+                            translateLeft = Vector3.left;
+
+                        if (Input.GetKey(KeyCode.RightArrow))
+                            translateRight = Vector3.right;
+
+                        if (Input.GetKey(KeyCode.UpArrow))
+                            translateUp = Vector3.up;
+
+                        if (Input.GetKey(KeyCode.DownArrow))
+                            translateDown = Vector3.down;
                     }
                 }
             }
 
-            if (Input.GetKey(KeyCode.D))
+            // Final fector
+            Vector3 moveTo = (translateDown + translateUp +
+                translateLeft + translateRight).normalized *
+                marionetteParent.TranslationForce * Time.deltaTime;
+
+            // Constrain
+            if (Vector3.Distance(transform.position + moveTo,
+                        anchorOfRadiusOfAction.position) > radiusOfAction)
             {
-                if (limb == Limb.RightLeg)
-                {
-                    if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.DownArrow))
-                    {
-                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-                }
+                transform.position =
+                    anchorOfRadiusOfAction.position +
+                    anchorOfRadiusOfAction.position.Direction(
+                        transform.position + moveTo) *
+                    radiusOfAction;
             }
 
-            if (Input.GetKey(KeyCode.Q))
-            {
-                if (limb == Limb.LeftArm)
-                {
-                    if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
+            transform.Translate(moveTo);
 
-                    if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.DownArrow))
-                    {
-                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-                }
-            }
-
-            if (Input.GetKey(KeyCode.E))
-            {
-                if (limb == Limb.RightArm)
-                {
-                    if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        transform.Translate(Vector3.left * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        transform.Translate(Vector3.right * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        transform.Translate(Vector3.up * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.DownArrow))
-                    {
-                        transform.Translate(Vector3.down * marionetteParent.TranslationForce * Time.deltaTime);
-                    }
-                }
-            }
             return;
         }
         #endregion

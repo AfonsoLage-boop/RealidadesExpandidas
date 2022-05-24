@@ -2089,7 +2089,7 @@ GameObject:
   - component: {fileID: -8069133201495171051}
   - component: {fileID: 4398868908040841530}
   m_Layer: 0
-  m_Name: Position 7 - Kinda Good
+  m_Name: Position 7
   m_TagString: MarionetteMatchGameObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,6 +9,7 @@ public class UITypeOfControlOptions : MonoBehaviour
 
     [SerializeField] private RawImage[] imagesToDisable;
     [SerializeField] private GameObject[] sliders;
+    [SerializeField] private GameObject keyboardControls;
 
     private void Awake()
     {
@@ -36,6 +37,8 @@ public class UITypeOfControlOptions : MonoBehaviour
             {
                 slider.SetActive(true);
             }
+
+            keyboardControls.SetActive(false);
         }
         else
         {
@@ -50,6 +53,8 @@ public class UITypeOfControlOptions : MonoBehaviour
             {
                 slider.SetActive(false);
             }
+
+            keyboardControls.SetActive(true);
         }
     }
 
@@ -76,6 +81,8 @@ public class UITypeOfControlOptions : MonoBehaviour
             {
                 slider.SetActive(true);
             }
+
+            keyboardControls.SetActive(false);
         }
         else
         {
@@ -90,6 +97,8 @@ public class UITypeOfControlOptions : MonoBehaviour
             {
                 slider.SetActive(false);
             }
+
+            keyboardControls.SetActive(true);
         }
     }
 }

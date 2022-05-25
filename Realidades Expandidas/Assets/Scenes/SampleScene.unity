@@ -6487,7 +6487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlWithKeyboard: 1
-  translationForce: 1.5
+  translationForce: 2
 --- !u!1 &617910567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4791153749335152941, guid: 0798861f7d3e62a418a1a23cf781d696, type: 3}
@@ -13036,6 +13036,7 @@ GameObject:
   - component: {fileID: 1402850256}
   - component: {fileID: 1402850255}
   - component: {fileID: 1402850258}
+  - component: {fileID: 1402850259}
   m_Layer: 0
   m_Name: Reset Statistics - Intro Square
   m_TagString: Untagged
@@ -13129,6 +13130,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statistics: {fileID: 11400000, guid: 9aec2831c59b25b4b8c7cf0a37474df8, type: 2}
+--- !u!223 &1402850259
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402850253}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 200
+  m_TargetDisplay: 0
 --- !u!1 &1410344368
 GameObject:
   m_ObjectHideFlags: 0

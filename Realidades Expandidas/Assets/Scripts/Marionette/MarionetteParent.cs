@@ -5,9 +5,7 @@ using UnityEngine;
 /// </summary>
 public class MarionetteParent : MonoBehaviour
 {
-    [Header("Keyboard or Hands control")]
-    [SerializeField] private bool controlWithKeyboard;
-    public bool ControlWithKeyboard => controlWithKeyboard;
+    public bool ControlWithKeyboard { get; set; }
     [Range(0.1f, 5f)] [SerializeField] private float translationForce = 2f;
     public float TranslationForce => translationForce;
 

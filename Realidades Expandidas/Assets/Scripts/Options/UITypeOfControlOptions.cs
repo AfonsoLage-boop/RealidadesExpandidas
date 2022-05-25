@@ -8,11 +8,13 @@ public class UITypeOfControlOptions : MonoBehaviour
     private MarionetteParent marionetteParent;
 
     [SerializeField] private RawImage[] imagesToDisable;
+    [SerializeField] private GameObject[] sliders;
 
     private void Awake()
     {
         marionetteParent = FindObjectOfType<MarionetteParent>();
     }
+
 
     private void OnEnable()
     {
@@ -29,6 +31,11 @@ public class UITypeOfControlOptions : MonoBehaviour
                     image.enabled = true;
                 }
             }
+
+            foreach (GameObject slider in sliders)
+            {
+                slider.SetActive(true);
+            }
         }
         else
         {
@@ -37,6 +44,11 @@ public class UITypeOfControlOptions : MonoBehaviour
             foreach (var image in imagesToDisable)
             {
                 image.enabled = false;
+            }
+
+            foreach(GameObject slider in sliders)
+            {
+                slider.SetActive(false);
             }
         }
     }
@@ -59,6 +71,11 @@ public class UITypeOfControlOptions : MonoBehaviour
                     image.enabled = true;
                 }
             }
+
+            foreach (GameObject slider in sliders)
+            {
+                slider.SetActive(true);
+            }
         }
         else
         {
@@ -67,6 +84,11 @@ public class UITypeOfControlOptions : MonoBehaviour
             foreach (var image in imagesToDisable)
             {
                 image.enabled = false;
+            }
+
+            foreach (GameObject slider in sliders)
+            {
+                slider.SetActive(false);
             }
         }
     }

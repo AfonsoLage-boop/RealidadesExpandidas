@@ -2567,10 +2567,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Match Trigger
       objectReference: {fileID: 0}
-    - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5227762835308054076, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2632,10 +2628,6 @@ PrefabInstance:
     - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_Name
       value: Match Trigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5227762835308054076, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_RootOrder
@@ -2699,10 +2691,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Match Trigger
       objectReference: {fileID: 0}
-    - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5227762835308054076, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2764,10 +2752,6 @@ PrefabInstance:
     - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_Name
       value: Match Trigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 4869247729319302772, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5227762835308054076, guid: 6581d40f1c196ad479221e83ced2aaaa, type: 3}
       propertyPath: m_RootOrder

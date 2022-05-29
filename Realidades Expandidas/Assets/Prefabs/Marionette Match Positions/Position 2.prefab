@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 2244431125343882368}
   - component: {fileID: 2433240769917563465}
   m_Layer: 0
-  m_Name: Position 2 afonso
+  m_Name: Position 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

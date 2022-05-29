@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +55,11 @@ public class ObjectSpawner : MonoBehaviour
         StartCoroutine(SpawnObjectCoroutine());
     }
 
-    public void PauseSpawn(bool value) => IsPaused = value;
+    public void PauseSpawn(bool value)
+    {
+        IsPaused = value;
+        PausedEvent(value);
+    }
     public void InitialMenu(bool value) => InInitialMenu = value;
 
     public void SpawnOneMarionette()
@@ -163,4 +168,7 @@ public class ObjectSpawner : MonoBehaviour
 
         } while (true);
     }
+
+    protected virtual void OnPausedEvent(bool paused) => PausedEvent?.Invoke(paused);
+    public event Action<bool> PausedEvent;
 }
